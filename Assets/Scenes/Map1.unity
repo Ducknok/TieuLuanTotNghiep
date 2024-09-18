@@ -7363,6 +7363,36 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &333976621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 333976622}
+  m_Layer: 0
+  m_Name: WallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &333976622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333976621}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1185067982}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &345961369
 GameObject:
   m_ObjectHideFlags: 0
@@ -39146,7 +39176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2204151, y: 0.6216879, z: -7.0237317}
+  m_LocalPosition: {x: 8.589585, y: 13.681687, z: -7.0237317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 609156688}
@@ -39950,19 +39980,32 @@ MonoBehaviour:
   rb: {fileID: 1185067984}
   anim: {fileID: 500337595}
   groundCheck: {fileID: 437397786}
+  wallCheck: {fileID: 333976622}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  isFacingRight: 1
   movementImputDirection: 0
   movementSpeed: 10
   isWalking: 0
+  isFacingRight: 1
   jumpForce: 16
   groundCheckRadius: 0.3
   amountOfJumps: 2
   amountOfJumpsLeft: 0
   isGroundCheck: 0
   canJump: 0
+  wallCheckDistance: 0.5
+  wallSlidingSpeed: 2
+  moveForeceInAir: 50
+  airDragMultiplier: 0.95
+  variableJumpHeightmultiplier: 0.5
+  wallHopForce: 10
+  wallJumpFore: 25
+  facingDirection: 1
+  wallHopDirection: {x: 1, y: 0.5}
+  wallJumpDirection: {x: 1, y: 2}
+  isTouchingWall: 0
+  isWallSliding: 0
 --- !u!1 &1184075187
 GameObject:
   m_ObjectHideFlags: 3
@@ -40076,12 +40119,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185067981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10.59, z: 0}
+  m_LocalPosition: {x: 9.81, y: 23.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 493995936}
   - {fileID: 778738723}
   - {fileID: 437397786}
+  - {fileID: 333976622}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40157,7 +40201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557375382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2204151, y: 0.6216879, z: -7.0237317}
+  m_LocalPosition: {x: 8.589585, y: 13.681687, z: -7.0237317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1184075188}
