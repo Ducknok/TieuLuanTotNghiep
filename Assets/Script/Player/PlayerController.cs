@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected Animator anim;
     [SerializeField] protected Transform groundCheck;
     [SerializeField] protected Transform wallCheck;
-    //[SerializeField] protected Transform ledgeCheck;
     [SerializeField] protected LayerMask whatIsGround;
 
     [Header("Movement")]
@@ -53,6 +52,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected bool isTouchingWall;
     [SerializeField] protected bool isWallSliding;
     [SerializeField] protected bool hasWallJumped;
+
+    [Header("Dash")]
+    [SerializeField] protected float dashTime;
+    [SerializeField] protected float dashSpeed;
+    [SerializeField] protected float distanceBetweenImages;
+    [SerializeField] protected float dashCoolDown;
+    [SerializeField] protected float dashTimeLeft;
+    [SerializeField] protected float lastImageXpos;
+    [SerializeField] protected float lastDash = -100f;
+    [SerializeField] protected bool isDashing = false;
     
 
     protected virtual void Start()
@@ -71,6 +80,7 @@ public class PlayerController : MonoBehaviour
         this.CheckIfCanJump();
         this.CheckIfWallSliding();
         this.CheckJump();
+        this.CheckDash();
     }
     protected virtual void FixedUpdate()
     {
@@ -182,6 +192,46 @@ public class PlayerController : MonoBehaviour
         {
             this.checkJumpMultiplier = false;
             this.rb.velocity = new Vector2(this.rb.velocity.x, this.rb.velocity.y * this.variableJumpHeightmultiplier);
+        }
+        if (Input.GetButton("Dash"))
+        {
+            Debug.Log("Da an dash");
+            if (Time.time >= (this.lastDash + this.dashCoolDown))
+            this.AttemptToDash();
+        }
+    }
+    protected virtual void AttemptToDash()
+    {
+        this.isDashing = true;
+        this.dashTimeLeft = this.dashTime;
+        this.lastDash = Time.time;
+
+        PlayerAfterImagePool.Instance.GetFromPool();
+        this.lastImageXpos = transform.position.x;
+    }
+    protected virtual void CheckDash()
+    {
+        if (this.isDashing)
+        {
+            if (this.dashTimeLeft > 0)
+            {
+                this.canMove = false;
+                this.canFlip = false;
+                this.rb.velocity = new Vector2(this.dashSpeed * this.facingDirection, this.rb.velocity.y);
+                this.dashTimeLeft -= Time.deltaTime;
+
+                if (Mathf.Abs(this.transform.position.x - this.lastImageXpos) > this.distanceBetweenImages)
+                {
+                    PlayerAfterImagePool.Instance.GetFromPool();
+                    this.lastImageXpos = this.transform.position.x;
+                }
+            }
+            if (this.dashTimeLeft <= 0 || this.isTouchingWall)
+            {
+                this.isDashing = false;
+                this.canMove = true;
+                this.canFlip = true;
+            }
         }
     }
     protected virtual void CheckJump()
