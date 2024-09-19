@@ -211,6 +211,10 @@ public class PlayerMovement : MonoBehaviour
         this.lastImageXpos = transform.position.x;
     }
 
+    public int GetFacingDirection()
+    {
+        return facingDirection;
+    }
     protected virtual void CheckDash()
     {
         if (this.isDashing)
