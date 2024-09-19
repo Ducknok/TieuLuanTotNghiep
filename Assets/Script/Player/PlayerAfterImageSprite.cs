@@ -13,7 +13,7 @@ public class PlayerAfterImageSprite : MonoBehaviour
     [SerializeField] protected float timeActivated;
     [SerializeField] protected float alpha;
     [SerializeField] protected float alphaSet = 0.8f;
-    [SerializeField] protected float alphaMultiplier = 0.85f;
+    [SerializeField] protected float alphaDecay = 0.85f;
 
     protected virtual void OnEnable()
     {
@@ -29,7 +29,7 @@ public class PlayerAfterImageSprite : MonoBehaviour
     }
     protected virtual void Update()
     {
-        this.alpha *= this.alphaMultiplier;
+        this.alpha -= this.alphaDecay * Time.deltaTime;
         this.color = new Color(1f, 1f, 1f, alpha);
         this.sr.color = this.color;
 

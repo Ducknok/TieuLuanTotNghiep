@@ -62,12 +62,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] protected float lastImageXpos;
     [SerializeField] protected float lastDash = -100f;
     [SerializeField] protected bool isDashing = false;
-    
+
 
     protected virtual void Start()
     {
         this.rb = transform.GetComponentInParent<Rigidbody2D>();
-        this.anim = FindObjectOfType<Animator>();
+        this.anim = transform.parent.GetComponentInChildren<Animator>();
         this.amountOfJumpsLeft = this.amountOfJumps;
         this.wallHopDirection.Normalize();
         this.wallJumpDirection.Normalize();
@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
     }
     protected virtual void CheckIfWallSliding()
     {
-        if(this.isTouchingWall && this.movementImputDirection == this.facingDirection && this.rb.velocity.y < 0)
+        if (this.isTouchingWall && this.movementImputDirection == this.facingDirection && this.rb.velocity.y < 0)
         {
             this.isWallSliding = true;
         }
@@ -105,12 +105,12 @@ public class PlayerMovement : MonoBehaviour
 
         this.isTouchingWall = Physics2D.Raycast(this.wallCheck.position, this.transform.right, this.wallCheckDistance, this.whatIsGround);
 
-        
+
     }
-   
+
     protected virtual void CheckIfCanJump()
     {
-        if(this.isGroundCheck && this.rb.velocity.y <= 0.01f)
+        if (this.isGroundCheck && this.rb.velocity.y <= 0.01f)
         {
             this.amountOfJumpsLeft = this.amountOfJumps;
         }
@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
         {
             this.canWallJump = true;
         }
-        if(this.amountOfJumpsLeft <= 0)
+        if (this.amountOfJumpsLeft <= 0)
         {
             this.canNormalJump = false;
         }
@@ -129,15 +129,15 @@ public class PlayerMovement : MonoBehaviour
     }
     protected virtual void CheckMovementDirection()
     {
-        if(this.isFacingRight && this.movementImputDirection < 0)
+        if (this.isFacingRight && this.movementImputDirection < 0)
         {
             this.Flip();
         }
-        else if(!this.isFacingRight && this.movementImputDirection > 0)
+        else if (!this.isFacingRight && this.movementImputDirection > 0)
         {
             this.Flip();
         }
-        if(Mathf.Abs(this.rb.velocity.x) >= 0.01f)
+        if (Mathf.Abs(this.rb.velocity.x) >= 0.01f)
         {
             this.isWalking = true;
         }
@@ -148,10 +148,10 @@ public class PlayerMovement : MonoBehaviour
     }
     protected virtual void UpdateAnimation()
     {
-        anim.SetBool("isWalking", this.isWalking);
-        anim.SetBool("isGrounded", this.isGroundCheck);
-        anim.SetFloat("yVelocity", this.rb.velocity.y);
-        anim.SetBool("isWallSliding", this.isWallSliding);
+        anim.SetBool("isWalking", isWalking);
+        anim.SetBool("isGrounded", isGroundCheck);
+        anim.SetFloat("yVelocity", rb.velocity.y);
+        anim.SetBool("isWallSliding", isWallSliding);
     }
     protected virtual void CheckInput()
     {
@@ -169,9 +169,9 @@ public class PlayerMovement : MonoBehaviour
                 this.isAttempingToJump = true;
             }
         }
-        if(Input.GetButtonDown("Horizontal") && this.isTouchingWall)
+        if (Input.GetButtonDown("Horizontal") && this.isTouchingWall)
         {
-            if(!this.isGroundCheck && this.movementImputDirection != facingDirection)
+            if (!this.isGroundCheck && this.movementImputDirection != facingDirection)
             {
                 this.canMove = false;
                 this.canFlip = false;
@@ -182,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
         {
             turnTimer -= Time.deltaTime;
 
-            if(this.turnTimer <= 0)
+            if (this.turnTimer <= 0)
             {
                 this.canMove = true;
                 this.canFlip = true;
@@ -197,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Da an dash");
             if (Time.time >= (this.lastDash + this.dashCoolDown))
-            this.AttemptToDash();
+                this.AttemptToDash();
         }
     }
 
@@ -262,7 +262,7 @@ public class PlayerMovement : MonoBehaviour
         {
             this.jumpTimer -= Time.deltaTime;
         }
-        if(wallJumpTimer > 0)
+        if (wallJumpTimer > 0)
         {
             if (hasWallJumped && movementImputDirection == -lastWallJumpDirection)
             {
@@ -325,7 +325,7 @@ public class PlayerMovement : MonoBehaviour
         {
             this.rb.velocity = new Vector2(this.rb.velocity.x * this.airDragMultiplier, this.rb.velocity.y);
         }
-        else if(this.canMove)
+        else if (this.canMove)
         {
             this.rb.velocity = new Vector2(this.movementSpeed * this.movementImputDirection, this.rb.velocity.y);
         }
@@ -339,11 +339,11 @@ public class PlayerMovement : MonoBehaviour
         //        this.rb.velocity = new Vector2(this.movementSpeed * this.movementImputDirection, this.rb.velocity.y);
         //    }
         //}
-        
+
 
         if (this.isWallSliding)
         {
-            if(this.rb.velocity.y < -this.wallSlidingSpeed)
+            if (this.rb.velocity.y < -this.wallSlidingSpeed)
             {
                 this.rb.velocity = new Vector2(this.rb.velocity.x, -this.wallSlidingSpeed);
             }
@@ -357,7 +357,7 @@ public class PlayerMovement : MonoBehaviour
             this.isFacingRight = !this.isFacingRight;
             this.transform.parent.Rotate(0.0f, 180.0f, 0.0f);
         }
-        
+
     }
     public virtual void DisableFlip()
     {

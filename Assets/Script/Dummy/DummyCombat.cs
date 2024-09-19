@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DummyCombat : MonoBehaviour
+public class DummyCombat : DummyController
 {
-    [SerializeField] protected PlayerController playerCtrl;
     [SerializeField] protected GameObject aliveGO, brokenTopGO, brokenBotGO;
     [SerializeField] protected Rigidbody2D rbAlive, rbBrokenTop, rbBrokenBot;
     [SerializeField] protected Animator aliveAnim;
@@ -24,11 +23,9 @@ public class DummyCombat : MonoBehaviour
     [SerializeField] protected bool applyKnockBack;
     [SerializeField] protected bool knockback;
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.currentHealth = this.maxHealth;
-
-        this.playerCtrl = FindObjectOfType<PlayerController>();
 
         this.aliveGO = transform.Find("Alive").gameObject;
         this.brokenTopGO = transform.Find("Broken Top").gameObject;
@@ -50,7 +47,7 @@ public class DummyCombat : MonoBehaviour
     protected virtual void Damage(float amount)
     {
         this.currentHealth -= amount;
-        this.playerFacingDirection = this.playerCtrl.PlayerMovement.GetFacingDirection();
+        this.playerFacingDirection = this.PC.PlayerM.GetFacingDirection();
 
         Instantiate(this.hitParticle, this.aliveAnim.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
         if (this.playerFacingDirection == 1)

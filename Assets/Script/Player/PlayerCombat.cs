@@ -11,6 +11,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] protected float attack1Radius;
     [SerializeField] protected float attack1Damage;
     [SerializeField] protected float lastInputTime = Mathf.NegativeInfinity;
+    [SerializeField] protected float[] attackDetails = new float[2];
     [SerializeField] protected bool combatEnabled;
     [SerializeField] protected bool gotInput;
     [SerializeField] protected bool isAttacking;
@@ -18,13 +19,13 @@ public class PlayerCombat : MonoBehaviour
 
     protected virtual void Start()
     {
-        this.anim = FindObjectOfType<Animator>();
+        this.anim = transform.parent.GetComponentInChildren<Animator>();
         this.anim.SetBool("canAttack", this.combatEnabled);
     }
     protected virtual void Update()
     {
         this.CheckCombatInput();
-        this.CheckAttack();       
+        this.CheckAttack();
     }
     protected virtual void CheckCombatInput()
     {
@@ -45,17 +46,17 @@ public class PlayerCombat : MonoBehaviour
         if (this.gotInput)
         {
             //Perform attack1
-            if (!this.isAttacking)
+            if (!isAttacking)
             {
                 this.gotInput = false;
                 this.isAttacking = true;
-                this.isFirstAttack = !this.isFirstAttack;
+                this.isFirstAttack = !isFirstAttack;
                 this.anim.SetBool("attack1", true);
-                this.anim.SetBool("firstAttack", this.isFirstAttack);
-                this.anim.SetBool("isAttacking", this.isAttacking);
+                this.anim.SetBool("firstAttack", isFirstAttack);
+                this.anim.SetBool("isAttacking", isAttacking);
             }
         }
-        if(Time.time >= this.lastInputTime + this.inputTimer)
+        if (Time.time >= this.lastInputTime + this.inputTimer)
         {
             //wait for new input
             this.gotInput = false;
@@ -65,9 +66,11 @@ public class PlayerCombat : MonoBehaviour
     {
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(this.attack1HitBoxPos.position, this.attack1Radius, this.whatIsDamageable);
 
+        this.attackDetails[0] = this.attack1Damage;
+        this.attackDetails[1] = this.transform.position.x;
         foreach (Collider2D col in detectedObjects)
         {
-            col.transform.parent.SendMessage("Damage", this.attack1Damage);
+            col.transform.parent.SendMessage("Damage", this.attackDetails);
             //Instantiate hit particle
         }
     }

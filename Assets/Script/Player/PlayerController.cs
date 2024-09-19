@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] protected PlayerMovement playerMovement;
-    public PlayerMovement PlayerMovement => playerMovement;
+    [SerializeField] protected PlayerMovement playerM;
+    public PlayerMovement PlayerM => playerM;
 
-    [SerializeField] protected PlayerCombat playerCombat;
-    public PlayerCombat PlayerCombat => playerCombat;
+    [SerializeField] protected PlayerCombat playerC;
+    public PlayerCombat PlayerC => playerC;
     protected void Start()
     {
-        this.LoadPlayerMovement();
-        this.LoadPlayerCombat();
+        LoadPlayerMovement();
+        LoadPlayerCombat();
     }
     protected virtual void LoadPlayerMovement()
     {
-        if (this.playerMovement != null) return;
-        this.playerMovement = transform.GetComponentInChildren<PlayerMovement>();
+        if (playerM != null) return;
+        playerM = transform.GetComponentInChildren<PlayerMovement>();
     }
     protected virtual void LoadPlayerCombat()
     {
-        if (this.playerCombat != null) return;
-        this.playerCombat = transform.GetComponentInChildren<PlayerCombat>();
+        if (playerC != null) return;
+        playerC = transform.GetComponentInChildren<PlayerCombat>();
     }
 }

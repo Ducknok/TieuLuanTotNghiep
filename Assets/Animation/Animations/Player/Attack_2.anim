@@ -20,18 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300046, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
-    - time: 0.083333336
       value: {fileID: 21300048, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
-    - time: 0.16666667
+    - time: 0.083333336
       value: {fileID: 21300050, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
-    - time: 0.25
+    - time: 0.16666667
       value: {fileID: 21300052, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
-    - time: 0.33333334
+    - time: 0.25
       value: {fileID: 21300054, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
-    - time: 0.41666666
+    - time: 0.33333334
       value: {fileID: 21300056, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
-    - time: 0.5
+    - time: 0.41666666
       value: {fileID: 21300058, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
     attribute: m_Sprite
     path: 
@@ -52,7 +50,6 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300046, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
     - {fileID: 21300048, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
     - {fileID: 21300050, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
     - {fileID: 21300052, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
@@ -64,12 +61,12 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5833333
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -91,21 +88,21 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.16666667
+  - time: 0.083333336
     functionName: LoadCheckAttackHitBox
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5
+  - time: 0.41666666
     functionName: LoadEnableFlip
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5833333
+  - time: 0.5
     functionName: LoadFinishAttack1
     data: 
     objectReferenceParameter: {fileID: 0}
