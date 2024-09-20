@@ -44,10 +44,18 @@ public class DummyCombat : DummyController
     {
         this.CheckKnockback();
     }
-    protected virtual void Damage(float amount)
+    protected virtual void Damage(float[] details)
     {
-        this.currentHealth -= amount;
-        this.playerFacingDirection = this.PC.PlayerM.GetFacingDirection();
+        this.currentHealth -= details[0];
+
+        if (details[1] < this.aliveGO.transform.position.x)
+        {
+            this.playerFacingDirection = 1;
+        }
+        else
+        {
+            this.playerFacingDirection = -1;
+        }
 
         Instantiate(this.hitParticle, this.aliveAnim.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
         if (this.playerFacingDirection == 1)

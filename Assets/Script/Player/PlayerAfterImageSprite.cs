@@ -19,7 +19,7 @@ public class PlayerAfterImageSprite : MonoBehaviour
     {
         this.sr = GetComponent<SpriteRenderer>();
         this.player = GameObject.FindGameObjectWithTag("Player").transform;
-        this.playerSR = player.GetComponentInChildren<SpriteRenderer>();
+        this.playerSR = player.GetComponentInParent<SpriteRenderer>();
 
         this.alpha = this.alphaSet;
         this.sr.sprite = this.playerSR.sprite;

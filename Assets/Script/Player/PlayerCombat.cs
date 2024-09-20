@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    //[SerializeField] protected PlayerController playerCtrl;
+    //public PlayerController PlayerCtrl => playerCtrl;
     [SerializeField] protected Animator anim;
     [SerializeField] protected Transform attack1HitBoxPos;
     [SerializeField] protected LayerMask whatIsDamageable;
@@ -11,7 +13,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] protected float attack1Radius;
     [SerializeField] protected float attack1Damage;
     [SerializeField] protected float lastInputTime = Mathf.NegativeInfinity;
-    [SerializeField] protected float[] attackDetails = new float[2];
+    [SerializeField] public float[] attackDetails = new float[2];
     [SerializeField] protected bool combatEnabled;
     [SerializeField] protected bool gotInput;
     [SerializeField] protected bool isAttacking;
@@ -19,7 +21,7 @@ public class PlayerCombat : MonoBehaviour
 
     protected virtual void Start()
     {
-        this.anim = transform.parent.GetComponentInChildren<Animator>();
+        this.anim = transform.GetComponentInParent<Animator>();
         this.anim.SetBool("canAttack", this.combatEnabled);
     }
     protected virtual void Update()
@@ -80,6 +82,7 @@ public class PlayerCombat : MonoBehaviour
         this.anim.SetBool("isAttacking", this.isAttacking);
         this.anim.SetBool("attack1", false);
     }
+    
     protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(this.attack1HitBoxPos.position, this.attack1Radius);

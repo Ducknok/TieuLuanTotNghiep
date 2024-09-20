@@ -63,11 +63,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] protected float lastDash = -100f;
     [SerializeField] protected bool isDashing = false;
 
+    [Header("Knockback")]
+    [SerializeField] protected float knockbackStartTime;
+    [SerializeField] protected float knockbackDuration;
+    [SerializeField] protected Vector2 knockbackSpeed;
+    [SerializeField] protected bool knockback;
+
 
     protected virtual void Start()
     {
         this.rb = transform.GetComponentInParent<Rigidbody2D>();
-        this.anim = transform.parent.GetComponentInChildren<Animator>();
+        this.anim = transform.GetComponentInParent<Animator>();
         this.amountOfJumpsLeft = this.amountOfJumps;
         this.wallHopDirection.Normalize();
         this.wallJumpDirection.Normalize();
@@ -81,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         this.CheckIfWallSliding();
         this.CheckJump();
         this.CheckDash();
+        this.CheckKnockback();
     }
     protected virtual void FixedUpdate()
     {
@@ -144,6 +151,28 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             this.isWalking = false;
+        }
+    }
+    public virtual bool GetDashStatus()
+    {
+        //Debug.Log(isDashing);
+        return isDashing;
+        
+    }
+    public virtual void Knockback(int direction)
+    {
+        //Debug.Log("Knockback");
+        this.knockback = true;
+        this.knockbackStartTime = Time.time;
+        this.rb.velocity = new Vector2(this.knockbackSpeed.x * direction, this.knockbackSpeed.y);
+    }
+
+    protected virtual void CheckKnockback()
+    {
+        if(Time.time >= this.knockbackStartTime + this.knockbackDuration && this.knockback)
+        {
+            this.knockback = false;
+            this.rb.velocity = new Vector2(0.0f, this.rb.velocity.y);
         }
     }
     protected virtual void UpdateAnimation()
@@ -321,25 +350,14 @@ public class PlayerMovement : MonoBehaviour
     }
     protected virtual void ApplyMovement()
     {
-        if (!this.isGroundCheck && !this.isWallSliding && this.movementImputDirection == 0)
+        if (!this.isGroundCheck && !this.isWallSliding && this.movementImputDirection == 0 && !this.knockback)
         {
             this.rb.velocity = new Vector2(this.rb.velocity.x * this.airDragMultiplier, this.rb.velocity.y);
         }
-        else if (this.canMove)
+        else if (this.canMove && !this.knockback)
         {
             this.rb.velocity = new Vector2(this.movementSpeed * this.movementImputDirection, this.rb.velocity.y);
         }
-        //else if (!this.isGroundCheck && !this.isWallSliding && this.movementImputDirection != 0)
-        //{
-        //    Vector2 forceToAdd = new Vector2(this.moveForeceInAir * this.movementImputDirection, 0);
-        //    this.rb.AddForce(forceToAdd);
-
-        //    if(Mathf.Abs(this.rb.velocity.x) > this.movementSpeed)
-        //    {
-        //        this.rb.velocity = new Vector2(this.movementSpeed * this.movementImputDirection, this.rb.velocity.y);
-        //    }
-        //}
-
 
         if (this.isWallSliding)
         {
@@ -351,7 +369,7 @@ public class PlayerMovement : MonoBehaviour
     }
     protected virtual void Flip()
     {
-        if (!this.isWallSliding && this.canFlip)
+        if (!this.isWallSliding && this.canFlip && !knockback)
         {
             facingDirection *= -1;
             this.isFacingRight = !this.isFacingRight;

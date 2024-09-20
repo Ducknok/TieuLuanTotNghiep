@@ -4,24 +4,42 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] protected PlayerMovement playerM;
-    public PlayerMovement PlayerM => playerM;
+    [SerializeField] protected PlayerMovement playerMove;
+    public PlayerMovement PlayerMove => playerMove;
 
-    [SerializeField] protected PlayerCombat playerC;
-    public PlayerCombat PlayerC => playerC;
+    [SerializeField] protected PlayerCombat playerCom;
+    public PlayerCombat PlayerCom => playerCom;
+
+    [SerializeField] protected PlayerStats playerSta;
+    public PlayerStats PlayerSta => playerSta;
+
+    [SerializeField] protected GameManager gameManager;
+    public GameManager GameManager => gameManager;
     protected void Start()
     {
-        LoadPlayerMovement();
-        LoadPlayerCombat();
+        this.LoadPlayerMovement();
+        this.LoadPlayerCombat();
+        this.LoadPlayerStats();
+        this.LoadGameManager();
     }
     protected virtual void LoadPlayerMovement()
     {
-        if (playerM != null) return;
-        playerM = transform.GetComponentInChildren<PlayerMovement>();
+        if (this.playerMove != null) return;
+        this.playerMove = this.transform.GetComponentInChildren<PlayerMovement>();
     }
     protected virtual void LoadPlayerCombat()
     {
-        if (playerC != null) return;
-        playerC = transform.GetComponentInChildren<PlayerCombat>();
+        if (this.playerCom != null) return;
+        this.playerCom = this.transform.GetComponentInChildren<PlayerCombat>();
+    }
+    protected virtual void LoadPlayerStats()
+    {
+        if (this.playerSta != null) return;
+        this.playerSta = this.transform.GetComponent<PlayerStats>();
+    }
+    protected virtual void LoadGameManager()
+    {
+        if (this.gameManager != null) return;
+        this.gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 }
