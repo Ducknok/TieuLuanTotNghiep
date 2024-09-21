@@ -22,7 +22,7 @@ public class PlayerDamageReceiver : MonoBehaviour
 
             //Debug.Log("attackdetail0: " + this.PlayerCtrl.PlayerCom.attackDetails[0]);
             //Debug.Log("attackdetail: " + this.PlayerCtrl.PlayerCom.attackDetails[1]);
-            Debug.Log("transform: " + attackDetails[1]);
+            //Debug.Log("transform: " + attackDetails[1]);
             if (attackDetails[1] < this.transform.position.x)
             {
                 

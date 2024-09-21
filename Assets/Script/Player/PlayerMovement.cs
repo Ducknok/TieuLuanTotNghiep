@@ -224,7 +224,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetButton("Dash"))
         {
-            Debug.Log("Da an dash");
+            //Debug.Log("Da an dash");
             if (Time.time >= (this.lastDash + this.dashCoolDown))
                 this.AttemptToDash();
         }

@@ -189,7 +189,7 @@ public class EnemyController : MonoBehaviour
                 this.lastTouchDamageTime = Time.time;
                 this.attackDetails[0] = this.touchDamage;
                 this.attackDetails[1] = this.alive.transform.position.x;
-                Debug.Log("attackdetail truyen:" + this.attackDetails[1]);
+                //Debug.Log("attackdetail truyen:" + this.attackDetails[1]);
                 hit.SendMessage("Damage", this.attackDetails);
                 
             }
