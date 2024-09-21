@@ -14,15 +14,18 @@ public class Entity : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public Animator anim { get; private set; }
     public GameObject aliveGo { get; private set; }
+    public AnimationToStateMachine atsm { get; private set; }
     public int facingDirection { get; private set; }
     [SerializeField] protected Vector2 velocityWorkspace;
 
     public virtual void Start()
     {
         this.facingDirection = 1;
-        this.aliveGo = this.transform.Find("Alive").gameObject;
+        if (this.aliveGo != null) return;
+        else this.aliveGo = this.transform.Find("Alive").gameObject;
         this.rb = this.aliveGo.GetComponent<Rigidbody2D>();
         this.anim = this.aliveGo.GetComponent<Animator>();
+        this.atsm = this.aliveGo.GetComponent<AnimationToStateMachine>();
         this.stateMachine = new FiniteStateMachine();
     }
 
@@ -66,10 +69,18 @@ public class Entity : MonoBehaviour
         this.facingDirection *= -1;
         this.aliveGo.transform.Rotate(0.0f, 180.0f, 0.0f);
     }
-
+    public virtual bool CheckPlayerInCloseRangeAction()
+    {
+        return Physics2D.Raycast(this.playerCheck.position, this.aliveGo.transform.right, this.entityData.closeRangeActionDistance, this.entityData.whatIsPlayer);
+    }
     public virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(this.wallCheck.position, this.wallCheck.position + (Vector3)(Vector2.right * this.facingDirection * this.entityData.wallCheckDistance));
         Gizmos.DrawLine(this.ledgeCheck.position, this.ledgeCheck.position + (Vector3)(Vector2.down * this.entityData.ledgeCheckDistance));
+
+        Gizmos.DrawWireSphere((this.playerCheck.position + (Vector3)(Vector2.right * this.entityData.closeRangeActionDistance)), 0.2f);
+        Gizmos.DrawWireSphere((this.playerCheck.position + (Vector3)(Vector2.right * this.entityData.minAgroDistance)), 0.2f);
+        Gizmos.DrawWireSphere((this.playerCheck.position + (Vector3)(Vector2.right * this.entityData.maxAgroDistance)), 0.2f);
+
     }
 }

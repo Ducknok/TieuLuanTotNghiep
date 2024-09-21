@@ -24,6 +24,10 @@ public class E1_PlayerDetectedState : PlayerDetectedState
     {
         base.LogicUpdate();
 
+        if (this.performCloseRangeAction)
+        {
+            this.stateMachine.ChangeState(this.enemy.meleeAttackState);
+        }
         if (this.performLongRangeAction)
         {
             this.stateMachine.ChangeState(this.enemy.chargeState);
@@ -32,6 +36,7 @@ public class E1_PlayerDetectedState : PlayerDetectedState
         {
             this.stateMachine.ChangeState(this.enemy.lookForPlayerState);
         }
+        //TODO: transition to attack state
     }
 
     public override void PhysicsUpdate()
