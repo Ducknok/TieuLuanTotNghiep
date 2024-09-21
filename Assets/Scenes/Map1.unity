@@ -40954,6 +40954,36 @@ Transform:
   m_Father: {fileID: 609156688}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &545326992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 545326993}
+  m_Layer: 7
+  m_Name: PlayerCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &545326993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545326992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.083, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 712924775}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &557236828
 GameObject:
   m_ObjectHideFlags: 0
@@ -40964,7 +40994,7 @@ GameObject:
   m_Component:
   - component: {fileID: 557236829}
   m_Layer: 7
-  m_Name: GroundCheck
+  m_Name: LedgeCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40977,12 +41007,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557236828}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.139, y: -0.196, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.13899994, y: -0.1960001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 712924775}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &567792412
 GameObject:
@@ -41116,9 +41146,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
-  - {fileID: 557236829}
   - {fileID: 882219656}
   - {fileID: 1731105673}
+  - {fileID: 557236829}
+  - {fileID: 545326993}
   m_Father: {fileID: 1193398917}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -41138,7 +41169,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 8
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 77ea06e1b8d0db04993c02060bd72367, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -41964,11 +41995,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882219655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.244, y: 0.018, z: 0}
+  m_LocalPosition: {x: 0.223, y: 0.018, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 712924775}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1025948534
 GameObject:
@@ -42142,48 +42173,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1193398916}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5fb2c6caafc9a43a88a9e77ad2a5a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 674e460b3cd76984d998beedcac1f145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alive: {fileID: 712924773}
-  hitParticle: {fileID: 8086158511237388083, guid: 3caae2100887f7e4aa33854bac31d531, type: 3}
-  deathChunkParticle: {fileID: 8018059893440615517, guid: ca09949e26c383349bbea32cedef136a, type: 3}
-  deathBloodParticle: {fileID: 2770540865367106982, guid: 0816b9c01f85c344cb80292176daae2e, type: 3}
-  deathBoneParticle: {fileID: 6826994961680368653, guid: 54ea74935c976084bae7c15b0eacbcf1, type: 3}
-  aliveRb: {fileID: 712924776}
-  groundCheck: {fileID: 557236829}
   wallCheck: {fileID: 882219656}
-  touchDamageCheck: {fileID: 1731105673}
-  aliveAnim: {fileID: 712924774}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 512
-  groundCheckDistance: 0.5
-  wallCheckDistance: 0.1
-  movementSpeed: 3
-  maxHealth: 30
-  currentHealth: 0
-  knockbackDuration: 0.4
-  knockbackStartTime: 0
-  lastTouchDamageTime: 0
-  touchDamageCooldown: 0.2
-  touchDamage: 10
-  touchDamageWidth: 1
-  touchDamageHeight: 1.5
-  attackDetails:
-  - 0
-  - 1
-  facingDirection: 0
-  damageDirection: 0
-  movement: {x: 0, y: 0}
-  touchDamageBotLeft: {x: 0, y: 0}
-  touchDamageTopRight: {x: 0, y: 0}
-  knockbackSpeed: {x: 10, y: 5}
-  groundDetected: 0
-  wallDetected: 0
+  ledgeCheck: {fileID: 557236829}
+  playerCheck: {fileID: 545326993}
+  entityData: {fileID: 11400000, guid: 89534e78d31418d4a95bf44af7593478, type: 2}
+  velocityWorkspace: {x: 0, y: 0}
+  idleStateData: {fileID: 11400000, guid: a4711693c7b1a0147b0f7c76620d463b, type: 2}
+  moveStateData: {fileID: 11400000, guid: e6f2f5268a44a554883d9757fe66ffe1, type: 2}
+  playerDetectedData: {fileID: 11400000, guid: fbf84416d0ddee849a7b77866875a892, type: 2}
+  chargeStateData: {fileID: 11400000, guid: cffa3f398a3cf5d4993d796de9784a7f, type: 2}
+  lookForPlayerData: {fileID: 11400000, guid: 9a065a1b363ef6e438c25d2af095e470, type: 2}
 --- !u!1 &1557375382
 GameObject:
   m_ObjectHideFlags: 0
@@ -42279,7 +42281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 712924775}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1734009503
 GameObject:
