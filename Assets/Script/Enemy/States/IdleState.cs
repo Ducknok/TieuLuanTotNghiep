@@ -8,6 +8,7 @@ public class IdleState : State
     [SerializeField] protected float idleTime;
     [SerializeField] protected bool flipAfterIdle;
     [SerializeField] protected bool isIdleTimeOver;
+    [SerializeField] protected bool isPlayerInMinAgroRange;
 
 
     public IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData) : base(entity, stateMachine, animBoolName)
@@ -20,6 +21,7 @@ public class IdleState : State
         base.Enter();
         this.entity.SetVelocity(0.0f);
         this.isIdleTimeOver = false;
+        this.isPlayerInMinAgroRange = this.entity.CheckPlayerInMinAgroRange();
         this.SetRandomIdleTime();
     }
 
@@ -44,6 +46,7 @@ public class IdleState : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+        this.isPlayerInMinAgroRange = this.entity.CheckPlayerInMinAgroRange();
     }
 
     public void SetFlipAfterIdle(bool flip)

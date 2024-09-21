@@ -8,6 +8,7 @@ public class MoveState : State
 
     [SerializeField] protected bool isDetectingWall;
     [SerializeField] protected bool isDetectingLedge;
+    [SerializeField] protected bool isPlayerInMinAgroRange;
     public MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
@@ -20,6 +21,7 @@ public class MoveState : State
 
         this.isDetectingLedge = entity.CheckLedge();
         this.isDetectingWall = entity.CheckWall();
+        this.isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
     }
 
     public override void Exit()
@@ -37,5 +39,6 @@ public class MoveState : State
         base.PhysicsUpdate();
         this.isDetectingLedge = this.entity.CheckLedge();
         this.isDetectingWall = this.entity.CheckWall();
+        this.isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
     }
 }
