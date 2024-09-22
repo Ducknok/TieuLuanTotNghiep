@@ -18,7 +18,7 @@ public class PlayerDamageReceiver : MonoBehaviour
         {
             int direction;
             //Damage player here using attackDetails[0]
-            playerCtrl.PlayerSta.DecreaseHealth(attackDetails.damageAmout);
+            playerCtrl.PlayerSta.DecreaseHealth(attackDetails.damageAmount);
 
             //Debug.Log("attackdetail0: " + this.PlayerCtrl.PlayerCom.attackDetails[0]);
             //Debug.Log("attackdetail: " + this.PlayerCtrl.PlayerCom.attackDetails[1]);

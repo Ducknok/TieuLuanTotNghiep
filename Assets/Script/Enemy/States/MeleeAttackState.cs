@@ -20,7 +20,7 @@ public class MeleeAttackState : AttackState
     public override void Enter()
     {
         base.Enter();
-        this.attackDetails.damageAmout = this.stateData.attackDamage;
+        this.attackDetails.damageAmount = this.stateData.attackDamage;
         this.attackDetails.position = this.entity.aliveGo.transform.position;
     }
 

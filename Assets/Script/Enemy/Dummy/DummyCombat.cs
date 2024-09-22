@@ -44,11 +44,11 @@ public class DummyCombat : DummyController
     {
         this.CheckKnockback();
     }
-    protected virtual void Damage(float[] details)
+    protected virtual void Damage(AttackDetails attackDetails)
     {
-        this.currentHealth -= details[0];
+        this.currentHealth -= attackDetails.damageAmount;
 
-        if (details[1] < this.aliveGO.transform.position.x)
+        if (attackDetails.position.x < this.aliveGO.transform.position.x)
         {
             this.playerFacingDirection = 1;
         }

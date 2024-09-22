@@ -13,6 +13,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] protected float attack1Radius;
     [SerializeField] protected float attack1Damage;
     [SerializeField] protected float lastInputTime = Mathf.NegativeInfinity;
+    [SerializeField] protected float stunDamageAmount = 1f;
     [SerializeField] public AttackDetails attackDetails;
     [SerializeField] protected bool combatEnabled;
     [SerializeField] protected bool gotInput;
@@ -67,9 +68,10 @@ public class PlayerCombat : MonoBehaviour
     public virtual void CheckAttackHitBox()
     {
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(this.attack1HitBoxPos.position, this.attack1Radius, this.whatIsDamageable);
-
-        this.attackDetails.damageAmout = this.attack1Damage;
+        this.attackDetails.damageAmount = this.attack1Damage;
         this.attackDetails.position = this.transform.position;
+        this.attackDetails.stunDamageAmount = this.stunDamageAmount;
+
         foreach (Collider2D col in detectedObjects)
         {
             col.transform.parent.SendMessage("Damage", this.attackDetails);

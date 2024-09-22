@@ -36,7 +36,11 @@ public class E1_PlayerDetectedState : PlayerDetectedState
         {
             this.stateMachine.ChangeState(this.enemy.lookForPlayerState);
         }
-        //TODO: transition to attack state
+        else if (!this.isDetectingLedge)
+        {
+            this.entity.Flip();
+            this.stateMachine.ChangeState(this.enemy.moveState);
+        }
     }
 
     public override void PhysicsUpdate()
