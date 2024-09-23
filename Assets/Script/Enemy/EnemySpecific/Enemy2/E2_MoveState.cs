@@ -29,7 +29,7 @@ public class E2_MoveState : MoveState
     {
         base.LogicUpdate();
 
-        //TODO: transition to PlayerDetectedState
+        
         if (this.isPlayerInMinAgroRange)
         {
             this.stateMachine.ChangeState(this.enemy.playerDetectedState);

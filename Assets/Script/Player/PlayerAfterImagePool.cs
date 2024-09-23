@@ -26,7 +26,7 @@ public class PlayerAfterImagePool : MonoBehaviour
     }
     public virtual void AddToPool(GameObject gameObject)
     {
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         this.availableObjects.Enqueue(gameObject);
     }
 

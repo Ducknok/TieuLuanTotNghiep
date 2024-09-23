@@ -11,6 +11,8 @@ public class Enemy2 : Entity
     public E2_LookForPlayerState lookForPlayerState { get; private set; }
     public E2_StunState stunState { get; private set; }
     public E2_DeadState deadState { get; private set; }
+    public E2_DodgeState dodgeState { get; private set; }
+    public E2_RangeAttackState rangeAttackState { get; private set; }
 
     [SerializeField] private D_MoveState moveStateData;
     [SerializeField] private D_IdleState idleStateData;
@@ -19,7 +21,10 @@ public class Enemy2 : Entity
     [SerializeField] private D_LookForPlayer lookForPlayerStateData;
     [SerializeField] private D_StunState stunStateData;
     [SerializeField] private D_DeadState deadStateData;
+    [SerializeField] public D_DodgeState dodgeStateData;
+    [SerializeField] public D_RangeAttackState rangeAttackStateData;
     [SerializeField] private Transform meleeAttackPosition;
+    [SerializeField] private Transform rangeAttackPosition;
     
 
     public override void Start()
@@ -32,6 +37,8 @@ public class Enemy2 : Entity
         this.lookForPlayerState = new E2_LookForPlayerState(this, this.stateMachine, "lookForPlayer", this.lookForPlayerStateData, this);
         this.stunState = new E2_StunState(this, this.stateMachine, "stun", this.stunStateData, this);
         this.deadState = new E2_DeadState(this, this.stateMachine, "dead", this.deadStateData, this);
+        this.dodgeState = new E2_DodgeState(this, this.stateMachine, "dodge", this.dodgeStateData, this);
+        this.rangeAttackState = new E2_RangeAttackState(this, this.stateMachine, "rangeAttack", this.rangeAttackPosition, this.rangeAttackStateData, this);
 
         this.stateMachine.Initialize(this.moveState);
     }
@@ -47,6 +54,10 @@ public class Enemy2 : Entity
         else if(this.isStunned && this.stateMachine.currentState != this.stunState)
         {
             this.stateMachine.ChangeState(stunState);
+        }
+        else if (this.CheckPlayerInMinAgroRange())
+        {
+            this.stateMachine.ChangeState(this.rangeAttackState);
         }
         else if (!this.CheckPlayerInMinAgroRange())
         {

@@ -7,7 +7,7 @@ public class State
     [SerializeField] protected FiniteStateMachine stateMachine;
     [SerializeField] protected Entity entity;
 
-    [SerializeField] protected float startTime;
+    [SerializeField] public float startTime { get; protected set; }
 
     [SerializeField] protected string animBoolName;
 
