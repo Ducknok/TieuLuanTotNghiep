@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E1_IdleState : IdleState
+public class E2_LookForPlayerState : LookForPlayerState
 {
-    private Enemy1 enemy;
-    public E1_IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData, Enemy1 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    private Enemy2 enemy;
+    public E2_LookForPlayerState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_LookForPlayer stateData, Enemy2 enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
+    }
+
+    public override void DoChecks()
+    {
+        base.DoChecks();
     }
 
     public override void Enter()
@@ -28,8 +33,7 @@ public class E1_IdleState : IdleState
         {
             this.stateMachine.ChangeState(this.enemy.playerDetectedState);
         }
-
-        else if (this.isIdleTimeOver)
+        else if(this.isAllTurnsTimeDone)
         {
             this.stateMachine.ChangeState(this.enemy.moveState);
         }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5930436434016536992}
   - component: {fileID: 8817400131546338966}
   m_Layer: 0
-  m_Name: HitParticle
+  m_Name: Hit2Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 10
   m_Sprite: {fileID: -7221113779182823725, guid: 77b6a277578350b4cb9c327381183f94, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2924528, g: 0.0013794977, b: 0.0013794977, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

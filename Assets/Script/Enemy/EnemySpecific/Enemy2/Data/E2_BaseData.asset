@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cff42f1a02745f748bde2962f6e213fd, type: 3}
-  m_Name: E1_BaseData
+  m_Name: E2_BaseData
   m_EditorClassIdentifier: 
   maxHealth: 50
   damageHopSpeed: 10
@@ -22,7 +22,7 @@ MonoBehaviour:
   stunResistance: 3
   stunRecoveryTime: 2
   closeRangeActionDistance: 2
-  hitParticle: {fileID: 8086158511237388083, guid: 3caae2100887f7e4aa33854bac31d531, type: 3}
+  hitParticle: {fileID: 8086158511237388083, guid: c406771737c96174b83ea437c71ced36, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64

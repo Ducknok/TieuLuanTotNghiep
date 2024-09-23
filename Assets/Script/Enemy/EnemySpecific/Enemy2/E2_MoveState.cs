@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E1_IdleState : IdleState
+public class E2_MoveState : MoveState
 {
-    private Enemy1 enemy;
-    public E1_IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData, Enemy1 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    private Enemy2 enemy;
+    public E2_MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData, Enemy2 enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
+    }
+
+    public override void DoChecks()
+    {
+        base.DoChecks();
     }
 
     public override void Enter()
@@ -24,14 +29,15 @@ public class E1_IdleState : IdleState
     {
         base.LogicUpdate();
 
+        //TODO: transition to PlayerDetectedState
         if (this.isPlayerInMinAgroRange)
         {
             this.stateMachine.ChangeState(this.enemy.playerDetectedState);
         }
-
-        else if (this.isIdleTimeOver)
+        else if(this.isDetectingWall || !this.isDetectingLedge)
         {
-            this.stateMachine.ChangeState(this.enemy.moveState);
+            this.enemy.idleState.SetFlipAfterIdle(true);
+            this.stateMachine.ChangeState(this.enemy.idleState);
         }
     }
 
