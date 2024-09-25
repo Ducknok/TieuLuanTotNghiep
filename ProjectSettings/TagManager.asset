@@ -60,3 +60,6 @@ TagManager:
   - name: Foreground Decoration
     uniqueID: 3075655533
     locked: 0
+  - name: Backround Deco
+    uniqueID: 2706003527
+    locked: 0

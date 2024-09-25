@@ -19,6 +19,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] protected bool gotInput;
     [SerializeField] protected bool isAttacking;
     [SerializeField] protected bool isFirstAttack;
+    
 
     protected virtual void Start()
     {
@@ -54,9 +55,11 @@ public class PlayerCombat : MonoBehaviour
                 this.gotInput = false;
                 this.isAttacking = true;
                 this.isFirstAttack = !isFirstAttack;
+               
                 this.anim.SetBool("attack1", true);
                 this.anim.SetBool("firstAttack", isFirstAttack);
                 this.anim.SetBool("isAttacking", isAttacking);
+                
             }
         }
         if (Time.time >= this.lastInputTime + this.inputTimer)
