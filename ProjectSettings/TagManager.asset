@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Dead
   - Player
   - Enemy
-  - 
+  - Item
   - 
   - 
   - 
@@ -62,4 +63,7 @@ TagManager:
     locked: 0
   - name: Backround Deco
     uniqueID: 2706003527
+    locked: 0
+  - name: Item
+    uniqueID: 3841573311
     locked: 0
