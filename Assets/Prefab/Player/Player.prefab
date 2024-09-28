@@ -345,7 +345,8 @@ MonoBehaviour:
   playerCtrl: {fileID: 0}
   deathChunkParticle: {fileID: 8018059893440615517, guid: ca09949e26c383349bbea32cedef136a, type: 3}
   deathBloodParticle: {fileID: 2770540865367106982, guid: 0816b9c01f85c344cb80292176daae2e, type: 3}
-  healthImg: {fileID: 0}
+  healthImg: {fileID: 6927761263873202027, guid: 71119bf2dabdee749a0ca210ffc54667, type: 3}
+  hitPariticle: {fileID: 8086158511237388083, guid: c406771737c96174b83ea437c71ced36, type: 3}
   maxHealth: 100
   currentHealth: 0
 --- !u!1 &918629119727939453
