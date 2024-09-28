@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] protected float movementImputDirection;
-    [SerializeField] protected float movementSpeed = 10.0f;
+    [SerializeField] public float movementSpeed = 10.0f;
     [SerializeField] protected float turnTimer;
     [SerializeField] protected float turnTimerSet = 0.1f;
     [SerializeField] protected bool isWalking;

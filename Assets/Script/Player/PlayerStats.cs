@@ -20,15 +20,15 @@ public class PlayerStats : MonoBehaviour
         this.currentHealth = this.maxHealth;
         //this.healthImg.fillAmount = currentHealth / 100;
     }
-    protected virtual void Update()
-    {
-        Debug.Log(this.transform.position);
-    }
+    //protected virtual void Update()
+    //{
+    //    Debug.Log(this.transform.position);
+    //}
     public virtual void DecreaseHealth(float amount)
     {
         this.currentHealth -= amount;
         this.healthImg.fillAmount = currentHealth / 100;
-        Instantiate(this.hitPariticle, this.transform.position, Quaternion.Euler(0f, 180f, Random.Range(0f, 360f)));
+        Instantiate(this.hitPariticle, this.transform.position, Quaternion.Euler(0f, 0f, 360f));
         if(this.currentHealth <= 0.0f)
         {
             this.Die();

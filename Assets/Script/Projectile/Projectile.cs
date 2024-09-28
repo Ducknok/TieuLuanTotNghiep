@@ -19,10 +19,10 @@ public class Projectile : MonoBehaviour
 
     protected virtual void Start()
     {
-        this.rb = GetComponent<Rigidbody2D>();
 
+        this.rb = GetComponent<Rigidbody2D>();
         this.rb.gravityScale = 0.0f;
-        this.rb.velocity = this.transform.right * this.speed;
+        
         this.isGravityOn = false;
 
         this.xStartPos = this.transform.position.x;
@@ -57,7 +57,7 @@ public class Projectile : MonoBehaviour
                 this.hasHitGround = true;
                 this.rb.gravityScale = 0f;
                 this.rb.velocity = Vector2.zero;
-                Destroy(gameObject, 2f);
+                Destroy(gameObject, 1f);
             }
             if (Mathf.Abs(this.xStartPos - this.transform.position.x) >= this.travelDistance && !this.isGravityOn)
             {
