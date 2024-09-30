@@ -17,12 +17,9 @@ public class PlayerDamageReceiver : MonoBehaviour
         if (!this.playerCtrl.PlayerMove.GetDashStatus())
         {
             int direction;
-            //Damage player here using attackDetails[0]
+            
             playerCtrl.PlayerSta.DecreaseHealth(attackDetails.damageAmount);
 
-            //Debug.Log("attackdetail0: " + this.PlayerCtrl.PlayerCom.attackDetails[0]);
-            //Debug.Log("attackdetail: " + this.PlayerCtrl.PlayerCom.attackDetails[1]);
-            //Debug.Log("transform: " + attackDetails[1]);
             if (attackDetails.position.x < this.transform.position.x)
             {
                 

@@ -22,7 +22,7 @@ public class Enemy2 : Entity
     [SerializeField] private D_StunState stunStateData;
     [SerializeField] private D_DeadState deadStateData;
     [SerializeField] public D_DodgeState dodgeStateData;
-    [SerializeField] public D_RangeAttackState rangeAttackStateData;
+    [SerializeField] public D_ArrowRangeAttackState rangeAttackStateData;
     [SerializeField] private Transform meleeAttackPosition;
     [SerializeField] private Transform rangeAttackPosition;
     

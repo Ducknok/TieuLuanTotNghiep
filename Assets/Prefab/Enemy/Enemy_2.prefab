@@ -353,7 +353,7 @@ MonoBehaviour:
   stunStateData: {fileID: 11400000, guid: 4077c0c6e5757f5489d89764a32d4991, type: 2}
   deadStateData: {fileID: 11400000, guid: 6bbfc54a5822c284b84a7d11f4259859, type: 2}
   dodgeStateData: {fileID: 11400000, guid: 8944ae5bfa5565347b53e05b601a16f5, type: 2}
-  rangeAttackStateData: {fileID: 11400000, guid: fbe5282c840d17141bad2d99bb478e4b, type: 2}
+  rangeAttackStateData: {fileID: 11400000, guid: b64fd3d86580815499f3d15afaaf5c2f, type: 2}
   meleeAttackPosition: {fileID: 5531972799335495003}
   rangeAttackPosition: {fileID: 5531972801064384223}
 --- !u!1 &5531972801064384192

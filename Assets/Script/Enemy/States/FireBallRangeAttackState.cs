@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeAttackState : AttackState
+public class FireBallRangeAttackState : AttackState
 {
-    protected D_RangeAttackState stateData;
-    protected GameObject projectile;
-    protected ArrowProjectile projectileScript;
-    [SerializeField] protected AnimationCurve projecttileMoveCurve;
-    public RangeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_RangeAttackState stateData) : base(entity, stateMachine, animBoolName, attackPosition)
+    [SerializeField] protected D_RangeAttackState stateData;
+    [SerializeField] protected GameObject projectile;
+    [SerializeField] protected FireballProjectile projectileScript;
+    public FireBallRangeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_RangeAttackState stateData) : base(entity, stateMachine, animBoolName, attackPosition)
     {
         this.stateData = stateData;
     }
@@ -46,9 +45,8 @@ public class RangeAttackState : AttackState
     public override void TriggerAttack()
     {
         base.TriggerAttack();
-
         this.projectile = GameObject.Instantiate(stateData.projectile, this.attackPosition.position, this.attackPosition.rotation);
-        this.projectileScript = projectile.GetComponent<ArrowProjectile>();
+        this.projectileScript = projectile.GetComponent<FireballProjectile>();
         this.projectileScript.FireProjectTile(this.stateData.projectileSpeed, this.stateData.projectileTravelDistance, this.stateData.projectileDamage);
     }
 }

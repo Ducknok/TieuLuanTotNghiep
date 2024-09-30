@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149000547040457654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.009, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 7726355064330592871}
@@ -129,8 +129,8 @@ MonoBehaviour:
   speed: 0
   travelDistance: 0
   xStartPos: 0
-  gravity: 0
-  damageRadius: 0
+  gravity: 8
+  damageRadius: 0.12
   isGravityOn: 0
   hasHitGround: 0
 --- !u!1 &7424429749658526099

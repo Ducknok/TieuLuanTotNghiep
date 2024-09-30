@@ -35,7 +35,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (Input.GetKey("j"))
         {
-            Debug.Log("attack");
+            //Debug.Log("attack");
             //this.combatEnabled = true;
             if (this.combatEnabled)
             {
@@ -77,8 +77,9 @@ public class PlayerCombat : MonoBehaviour
 
         foreach (Collider2D col in detectedObjects)
         {
-            col.transform.parent.SendMessage("Damage", this.attackDetails);
-            //Instantiate hit particle
+            
+                col.transform.parent.SendMessage("Damage", this.attackDetails);
+            
         }
     }
     public virtual void FinishAttack1()
