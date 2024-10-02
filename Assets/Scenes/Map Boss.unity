@@ -21401,12 +21401,9 @@ GameObject:
   - component: {fileID: 1016476763}
   - component: {fileID: 1016476765}
   - component: {fileID: 1016476762}
-  - component: {fileID: 1016476766}
-  - component: {fileID: 1016476768}
-  - component: {fileID: 1016476767}
   m_Layer: 7
-  m_Name: Boss
-  m_TagString: Enemy
+  m_Name: Alive
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21419,7 +21416,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016476758}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.43, y: 4.61, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children:
   - {fileID: 300274873}
@@ -21431,8 +21428,8 @@ Transform:
   - {fileID: 2083919758}
   - {fileID: 152145284}
   - {fileID: 1987137787}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 2139401587}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1016476760
 Animator:
@@ -21599,49 +21596,6 @@ MonoBehaviour:
   nextFireTime: 0
   spawnPoint: {fileID: 1987137787}
   prejectile: {fileID: 1675878483}
---- !u!114 &1016476766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016476758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18984ed269cd4f6448a1eb80dc28f19b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 1016476760}
-  healthImg: {fileID: 1469239189}
-  hitPariticle: {fileID: 8086158511237388083, guid: 3caae2100887f7e4aa33854bac31d531, type: 3}
-  maxHealth: 100
-  currentHealth: 0
---- !u!114 &1016476767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016476758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e9c1e9a75a5874d9021ac6fb2c49bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossCtrl: {fileID: 1016476768}
---- !u!114 &1016476768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016476758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 381e4920367cd5047b3b0f9c37563b8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  instance: {fileID: 1016476766}
 --- !u!1 &1020347173
 GameObject:
   m_ObjectHideFlags: 0
@@ -23215,14 +23169,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: f2a715e50e883b149bb89b873f6277aa, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1469239190
@@ -26185,6 +26139,85 @@ Transform:
   m_Father: {fileID: 567792414}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2139401586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2139401587}
+  - component: {fileID: 2139401590}
+  - component: {fileID: 2139401589}
+  - component: {fileID: 2139401588}
+  m_Layer: 7
+  m_Name: Boss
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2139401587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139401586}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.62, y: 4.61, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1016476759}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2139401588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139401586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e9c1e9a75a5874d9021ac6fb2c49bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossCtrl: {fileID: 2139401589}
+--- !u!114 &2139401589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139401586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381e4920367cd5047b3b0f9c37563b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instance: {fileID: 2139401590}
+--- !u!114 &2139401590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139401586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18984ed269cd4f6448a1eb80dc28f19b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathChunkParticle: {fileID: 8018059893440615517, guid: ca09949e26c383349bbea32cedef136a, type: 3}
+  deathBloodParticle: {fileID: 2770540865367106982, guid: 0816b9c01f85c344cb80292176daae2e, type: 3}
+  anim: {fileID: 1016476760}
+  healthImg: {fileID: 1469239189}
+  hitPariticle: {fileID: 8086158511237388083, guid: 3caae2100887f7e4aa33854bac31d531, type: 3}
+  maxHealth: 100
+  currentHealth: 0
 --- !u!114 &333461364170198700 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6927761263873202027, guid: 71119bf2dabdee749a0ca210ffc54667, type: 3}

@@ -35,11 +35,10 @@ public class PlayerCombat : MonoBehaviour
     {
         if (Input.GetKey("j"))
         {
-            //Debug.Log("attack");
-            //this.combatEnabled = true;
             if (this.combatEnabled)
             {
                 //Attemp combat
+                
                 this.gotInput = true;
                 this.lastInputTime = Time.time;
             }
@@ -77,8 +76,8 @@ public class PlayerCombat : MonoBehaviour
 
         foreach (Collider2D col in detectedObjects)
         {
-            
-                col.transform.parent.SendMessage("Damage", this.attackDetails);
+            AudioManager.Instance.PlayAudio(AudioManager.Instance.attack);
+            col.transform.parent.SendMessage("Damage", this.attackDetails);
             
         }
     }

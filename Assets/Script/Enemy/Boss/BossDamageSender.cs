@@ -21,8 +21,7 @@ public class BossDamageSender : MonoBehaviour
         
         foreach (Collider2D col in detectedObjects)
         {
-            if(gameObject.CompareTag("Player"))
-            col.transform.SendMessage("Damage", this.attackDetails);
+                col.transform.SendMessage("Damage", this.attackDetails);
         }
     }
     public virtual void CheckAttack2HitBox()
@@ -33,8 +32,7 @@ public class BossDamageSender : MonoBehaviour
 
         foreach (Collider2D col in detectedObjects)
         {
-            if (gameObject.CompareTag("Player"))
-            col.transform.SendMessage("Damage", this.attackDetails);
+                col.transform.SendMessage("Damage", this.attackDetails);
         }
     }
     protected virtual void OnDrawGizmos()

@@ -19,6 +19,7 @@ public class DeadState : State
     {
         base.Enter();
 
+        AudioManager.Instance.PlayAudio(AudioManager.Instance.dead);
         GameObject.Instantiate(stateData.deathBloodParticle, this.entity.aliveGo.transform.position, this.stateData.deathBloodParticle.transform.rotation);
         GameObject.Instantiate(stateData.deathChunkParticle, this.entity.aliveGo.transform.position, this.stateData.deathChunkParticle.transform.rotation);
 

@@ -18,26 +18,29 @@ public class PlayerStats : MonoBehaviour
     {
         this.playerCtrl = this.transform.GetComponent<PlayerController>();
         this.currentHealth = this.maxHealth;
-        //this.healthImg.fillAmount = currentHealth / 100;
+        this.healthImg.fillAmount = currentHealth / 100;
     }
-    //protected virtual void Update()
-    //{
-    //    Debug.Log(this.transform.position);
-    //}
+    protected virtual void Update()
+    {
+        this.healthImg.fillAmount = currentHealth / 100;
+        
+        if (this.currentHealth <= 0.0f)
+        {
+            AudioManager.Instance.PlayAudio(AudioManager.Instance.dead);
+            this.Die();
+        }
+    }
     public virtual void DecreaseHealth(float amount)
     {
         this.currentHealth -= amount;
-        this.healthImg.fillAmount = currentHealth / 100;
+        AudioManager.Instance.PlayAudio(AudioManager.Instance.hit);
         Instantiate(this.hitPariticle, this.transform.position, Quaternion.Euler(0f, 0f, 360f));
-        if(this.currentHealth <= 0.0f)
-        {
-            this.Die();
-        }
     }
     public virtual void Die()
     {
         Instantiate(this.deathChunkParticle, this.transform.position, this.deathChunkParticle.transform.rotation);
         Instantiate(this.deathBloodParticle, this.transform.position, this.deathBloodParticle.transform.rotation);
+
         this.playerCtrl.GameManager.Respawn();
         Destroy(gameObject);
     }
