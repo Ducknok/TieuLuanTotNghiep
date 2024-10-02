@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     protected virtual void Start()
     {
+        AudioManager.Instance.mainMenu.Stop();
         cvc = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
     }
     protected virtual void Update()
@@ -35,4 +37,9 @@ public class GameManager : MonoBehaviour
             this.respawn = false;
         }
     }
+    public virtual void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
 }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] protected AudioMixer musicMixer, effectsMixer;
-    [SerializeField] public AudioSource hit, dead, backgroundMusic, gems, attack;
+    [SerializeField] public AudioSource hit, dead, backgroundMusic, gems, attack, mainMenu;
 
     [Header("AudioManager")]
     [SerializeField] protected static AudioManager instance;

@@ -12,10 +12,13 @@ public class PlayerStats : MonoBehaviour
         deathBloodParticle;
     [SerializeField] protected Image healthImg;
     [SerializeField] protected GameObject hitPariticle;
+    [SerializeField] protected GameObject gameOverImage;
+    [SerializeField] protected Animator mainMenuAC;
     [SerializeField] public float maxHealth;
     [SerializeField] public float currentHealth;
     protected virtual void Start()
     {
+        this.gameOverImage.SetActive(false);
         this.playerCtrl = this.transform.GetComponent<PlayerController>();
         this.currentHealth = this.maxHealth;
         this.healthImg.fillAmount = currentHealth / 100;
@@ -27,6 +30,10 @@ public class PlayerStats : MonoBehaviour
         if (this.currentHealth <= 0.0f)
         {
             AudioManager.Instance.PlayAudio(AudioManager.Instance.dead);
+            Time.timeScale = 0;
+            AudioManager.Instance.backgroundMusic.Stop();
+            this.gameOverImage.SetActive(true);
+            this.mainMenuAC.updateMode = AnimatorUpdateMode.UnscaledTime;
             this.Die();
         }
     }
