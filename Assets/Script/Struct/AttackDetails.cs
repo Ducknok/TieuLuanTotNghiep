@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public struct AttackDetails 
 {
@@ -8,3 +9,5 @@ public struct AttackDetails
     public float damageAmount;
     public float stunDamageAmount;
 }
+
+

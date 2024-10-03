@@ -8,6 +8,9 @@ public class Spawner : MonoBehaviour
     [SerializeField] protected Transform holder;
     [SerializeField] protected List<Transform> prefabs;
     [SerializeField] protected List<Transform> poolObjects;
+    [SerializeField] protected int spawnedCount = 0;
+    public int SpawnedCount => spawnedCount;
+
 
     protected virtual void Start()
     {
@@ -52,6 +55,7 @@ public class Spawner : MonoBehaviour
         Transform newPrefab = this.GetObjectFromPool(prefab);
         newPrefab.SetPositionAndRotation(spawnPos, rotation);
         newPrefab.parent = this.holder;
+        this.spawnedCount++;
         return newPrefab;
     }
     protected virtual Transform GetObjectFromPool(Transform prefab)
@@ -73,6 +77,7 @@ public class Spawner : MonoBehaviour
     {
         this.poolObjects.Add(obj);
         obj.gameObject.SetActive(false);
+        this.spawnedCount--;
     }
     //Tim vien dan duoc goi
     public virtual Transform GetPrefabByName(string prefabName)

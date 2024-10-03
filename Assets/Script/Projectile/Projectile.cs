@@ -9,8 +9,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] protected LayerMask whatIsPlayer;
     [SerializeField] protected Transform damagePosition;
     [SerializeField] protected AttackDetails attackDetails;
-    [SerializeField] protected float speed;
-    [SerializeField] protected float travelDistance;
+    protected float speed;
+    protected float travelDistance;
     [SerializeField] protected float xStartPos;
     [SerializeField] protected float gravity;
     [SerializeField] protected float damageRadius;
