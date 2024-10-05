@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: df21ce3595ea82f4385a4470ccfd573a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,8 +126,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   damagePosition: {fileID: 7726355064330592871}
-  speed: 0
-  travelDistance: 0
   xStartPos: 0
   gravity: 8
   damageRadius: 0.12
