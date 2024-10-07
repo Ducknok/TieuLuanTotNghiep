@@ -9,6 +9,7 @@ public class SoulCount : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            this.cashToGive = Mathf.Round(Random.Range(10f, 50f));
             BankAccount.Instance.Soul(cashToGive);
             AudioManager.Instance.PlayAudio(AudioManager.Instance.gems);
             Destroy(gameObject);

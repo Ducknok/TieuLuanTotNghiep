@@ -28,7 +28,7 @@ public class E1_PlayerDetectedState : PlayerDetectedState
         {
             this.stateMachine.ChangeState(this.enemy.meleeAttackState);
         }
-        if (this.performLongRangeAction)
+        else if (this.performLongRangeAction)
         {
             this.stateMachine.ChangeState(this.enemy.chargeState);
         }

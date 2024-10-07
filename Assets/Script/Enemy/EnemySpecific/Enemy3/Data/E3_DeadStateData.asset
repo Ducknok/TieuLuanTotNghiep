@@ -16,10 +16,10 @@ MonoBehaviour:
   deathBloodParticle: {fileID: 2770540865367106982, guid: 0816b9c01f85c344cb80292176daae2e, type: 3}
   dropList:
   - itemSO: {fileID: 11400000, guid: 935e6abd2c831db4aad10745924b1e21, type: 2}
-    dropRate: 100000
+    dropRate: 1000000
     minDrop: 1
     maxDrop: 5
   - itemSO: {fileID: 11400000, guid: 5040fe55c94f1994bbb2367dc75422e5, type: 2}
-    dropRate: 100000
+    dropRate: 1000000
     minDrop: 0
     maxDrop: 2

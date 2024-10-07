@@ -27,7 +27,7 @@ public class Entity : MonoBehaviour
     [SerializeField] protected bool isStunned;
     [SerializeField] protected bool isDead;
 
-    public virtual void Start()
+    public virtual void Awake()
     {
         this.facingDirection = 1;
         this.currentHealth = this.entityData.maxHealth;

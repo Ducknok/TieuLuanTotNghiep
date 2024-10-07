@@ -23,9 +23,9 @@ public class Enemy1 : Entity
 
     [SerializeField] protected Transform meleeAttackPosition;
 
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
         this.moveState = new E1_MoveState(this, this.stateMachine, "move", this.moveStateData, this);
         this.idleState = new E1_IdleState(this, this.stateMachine, "idle", this.idleStateData, this);
         this.playerDetectedState = new E1_PlayerDetectedState(this, this.stateMachine, "playerDetected", this.playerDetectedData, this);
@@ -34,6 +34,10 @@ public class Enemy1 : Entity
         this.meleeAttackState = new E1_MeleeAttackState(this, this.stateMachine, "meleeAttack", this.meleeAttackPosition, this.meleeAttackStateData, this);
         this.stunState = new E1_StunState(this, this.stateMachine, "stun", this.stunStateData, this);
         this.deadState = new E1_DeadState(this, this.stateMachine, "dead", this.deadStateData, this);
+        
+    }
+    protected virtual void Start()
+    {
         this.stateMachine.Initialize(this.moveState);
     }
     public override void OnDrawGizmos()

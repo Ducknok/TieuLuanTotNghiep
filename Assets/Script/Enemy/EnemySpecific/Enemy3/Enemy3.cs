@@ -25,9 +25,9 @@ public class Enemy3 : Entity
     [SerializeField] private D_DeadState deadStateData;
     [SerializeField] private Transform meleeAttackPosition;
 
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
         this.moveState = new E3_MoveState(this, this.stateMachine, "move", this.moveStateData, this);
         this.idleState = new E3_IdleState(this, this.stateMachine, "idle", this.idleStateData, this);
         this.playerDetectedState = new E3_PlayerDetectedState(this, this.stateMachine, "playerDetected", this.playerDetectedStateData, this);
@@ -38,6 +38,10 @@ public class Enemy3 : Entity
         this.deadState = new E3_DeadState(this, this.stateMachine, "dead", this.deadStateData, this);
         
 
+        
+    }
+    protected virtual void Start()
+    {
         this.stateMachine.Initialize(this.moveState);
     }
     public override void Damage(AttackDetails attackDetails)

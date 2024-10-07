@@ -27,9 +27,9 @@ public class Enemy2 : Entity
     [SerializeField] private Transform rangeAttackPosition;
     
 
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
         this.moveState = new E2_MoveState(this, this.stateMachine, "move", this.moveStateData, this);
         this.idleState = new E2_IdleState(this, this.stateMachine, "idle", this.idleStateData, this);
         this.playerDetectedState = new E2_PlayerDetectedState(this, this.stateMachine, "playerDetected", this.playerDetectedStateData, this);
@@ -40,9 +40,12 @@ public class Enemy2 : Entity
         this.dodgeState = new E2_DodgeState(this, this.stateMachine, "dodge", this.dodgeStateData, this);
         this.rangeAttackState = new E2_RangeAttackState(this, this.stateMachine, "rangeAttack", this.rangeAttackPosition, this.rangeAttackStateData, this);
 
+        
+    }
+    protected virtual void Start()
+    {
         this.stateMachine.Initialize(this.moveState);
     }
-
     public override void Damage(AttackDetails attackDetails)
     {
         base.Damage(attackDetails);
