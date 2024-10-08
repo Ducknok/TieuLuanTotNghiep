@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField] private static PlayerStats instance;
+    public static PlayerStats Instance => instance; 
     [SerializeField] protected PlayerController playerCtrl;
     public PlayerController PlayerCtrl => playerCtrl;
     [SerializeField] protected GameObject
@@ -18,10 +20,16 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public float currentHealth;
     protected virtual void Start()
     {
+        this.maxHealth = PlayerPrefs.GetFloat("MaxHealth", maxHealth);
         this.gameOverImage.SetActive(false);
         this.playerCtrl = this.transform.GetComponent<PlayerController>();
         this.currentHealth = this.maxHealth;
         this.healthImg.fillAmount = currentHealth / 100;
+        
+    }
+    protected virtual void Awake()
+    {
+        PlayerStats.instance = this;
     }
     protected virtual void Update()
     {
@@ -52,5 +60,9 @@ public class PlayerStats : MonoBehaviour
         Destroy(gameObject);
     }
 
-
+    public virtual void DataToSave()
+    {
+        DataManager.Instance.CurrentHealthData(this.maxHealth);
+        this.currentHealth = PlayerPrefs.GetFloat("CurrentHealth");
+    }
 }

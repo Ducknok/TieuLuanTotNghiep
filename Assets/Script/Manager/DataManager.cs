@@ -24,4 +24,20 @@ public class DataManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("SFXVolume", value);
     }
+    public virtual void GoldDAta(float value)
+    {
+        PlayerPrefs.SetFloat("Gold", value);
+    }
+    public virtual void SoulData(float value)
+    {
+        PlayerPrefs.SetFloat("Soul", value);
+    }
+    public virtual void CurrentHealthData(float value)
+    {
+        PlayerPrefs.SetFloat("CurrentHealth", value);
+    }
+    public virtual void MaxHealthData(float value)
+    {
+        PlayerPrefs.SetFloat("MaxHealth", value);
+    }
 }

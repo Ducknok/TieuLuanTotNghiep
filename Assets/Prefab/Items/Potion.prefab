@@ -112,4 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5b61f3b432095488ec6dddb711d004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  gameManager: {fileID: 0}
+  itemToAdd: {fileID: 4643398478084498429}
   healthToGive: 10
+  amountToAdd: 1

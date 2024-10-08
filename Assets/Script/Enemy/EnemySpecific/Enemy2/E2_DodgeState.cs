@@ -43,7 +43,6 @@ public class E2_DodgeState : DodgeState
             {
                 this.stateMachine.ChangeState(this.enemy.lookForPlayerState);
             }
-            //TODO: ranged attack state
         }
     }
 

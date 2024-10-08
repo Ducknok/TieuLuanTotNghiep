@@ -8,7 +8,7 @@ public class SaveRoom : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-
+            PlayerStats.Instance.DataToSave();
             Debug.Log("Game Saved");
         }
     }
