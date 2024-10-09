@@ -8,8 +8,8 @@ public class BankAccount : MonoBehaviour
 {
     [SerializeField] protected static BankAccount instance;
     public static BankAccount Instance => instance;
-    [SerializeField] protected float coinBank;
-    [SerializeField] protected float soulBank;
+    [SerializeField] public float coinBank;
+    [SerializeField] public float soulBank;
     [SerializeField] protected TextMeshProUGUI coinText;
     [SerializeField] protected TextMeshProUGUI soulText;
     

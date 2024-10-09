@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ecbcacc9317db047bdac0483b61c849, type: 3}
-  m_Name: Potion
+  m_Name: ManaPotion
   m_EditorClassIdentifier: 
-  itemCode: 2
-  itemName: Potion
+  itemCode: 3
+  itemName: ManaPotion (Use)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpenBag : MonoBehaviour
 {
-    [SerializeField] protected GameObject inventoryMenu;
+    [SerializeField] public GameObject inventoryMenu;
     [SerializeField] protected bool isPaused;
     // Start is called before the first frame update
     protected virtual void Awake()

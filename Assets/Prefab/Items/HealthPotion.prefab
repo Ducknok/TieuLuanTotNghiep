@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4643398478084498426}
   - component: {fileID: 4643398478084498427}
   m_Layer: 11
-  m_Name: Potion
+  m_Name: HealthPotion
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,6 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
   gameManager: {fileID: 0}
-  itemToAdd: {fileID: 4643398478084498429}
+  itemToAdd: {fileID: 3485498151918252955, guid: d5343fd1ea14b3249a1c6eff07ee5bd6, type: 3}
   healthToGive: 10
   amountToAdd: 1

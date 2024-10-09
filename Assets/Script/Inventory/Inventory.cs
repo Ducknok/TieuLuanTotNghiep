@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +7,7 @@ using TMPro;
 public class Inventory : MonoBehaviour
 {
     TextMeshProUGUI text;
-    [SerializeField] protected GameObject[] slots;
+    [SerializeField] public GameObject[] slots;
     [SerializeField] protected GameObject[] backPack;
     [SerializeField] protected bool isInstantiated;
 
@@ -36,7 +36,7 @@ public class Inventory : MonoBehaviour
                     this.slots[i].GetComponent<SlotsScript>().isUsed = true;
                     inventoryItems.Add(itemName, itemAmount);
                     this.text = this.slots[i].GetComponentInChildren<TextMeshProUGUI>();
-                    text.text = itemAmount.ToString();
+                    this.text.text = itemAmount.ToString();
                     break;
                 }
                 else
@@ -87,7 +87,7 @@ public class Inventory : MonoBehaviour
         {
             if (!this.slots[i].GetComponent<SlotsScript>().isUsed)
             {
-                for(int j = i + 1; j< slots.Length; j++)
+                for(int j = i + 1; j < slots.Length; j++)
                 {
                     if (this.slots[j].GetComponent<SlotsScript>().isUsed)
                     {
