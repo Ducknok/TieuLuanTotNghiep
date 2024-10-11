@@ -10,10 +10,19 @@ public class Inventory : MonoBehaviour
     [SerializeField] public GameObject[] slots;
     [SerializeField] protected GameObject[] backPack;
     [SerializeField] protected bool isInstantiated;
-
-
+    [SerializeField] protected ItemList itemList;
 
     public Dictionary<string, int> inventoryItems = new Dictionary<string, int>();
+
+    protected virtual void Start()
+    {
+        if(itemList != null)
+        {
+            this.DataToInventory();
+        }
+        
+    }
+
     public void CheckSlotsAvailability(GameObject itemToAdd, string itemName, int itemAmount)
     {
         this.isInstantiated = false;
@@ -98,6 +107,35 @@ public class Inventory : MonoBehaviour
                         this.slots[j].GetComponent<SlotsScript>().isUsed = false;
                         break;
                     }
+                }
+            }
+        }
+    }
+    public void InventoryToData()
+    {
+        for(int i = 0; i < this.slots.Length; i++)
+        {
+            if (this.slots[i].GetComponent<SlotsScript>().isUsed)
+            {
+                if(!GameData.Instance.saveData.goToAddID.Contains(this.slots[i].GetComponentInChildren<ItemUse>().ID))
+                {
+                    GameData.Instance.saveData.goToAddID.Add(this.slots[i].GetComponentInChildren<ItemUse>().ID);
+                    GameData.Instance.saveData.inventoryItemsName.Add(this.slots[i].GetComponentInChildren<ItemUse>().name);
+                    GameData.Instance.saveData.inventoryItemsAmount.Add(this.inventoryItems[slots[i].GetComponentInChildren<ItemUse>().name]);
+                }
+            }
+        }
+    }
+    public void DataToInventory()
+    {
+        Debug.Log(GameData.Instance.saveData.goToAddID.Count);
+        for(int i = 0; i < GameData.Instance.saveData.goToAddID.Count; i++)
+        {
+            for(int j = 0; j < itemList.items.Count; j++)
+            {
+                if(itemList.items[j].ID == GameData.Instance.saveData.goToAddID[i])
+                {
+                    this.CheckSlotsAvailability(itemList.items[j].gameObject, GameData.Instance.saveData.inventoryItemsName[i], GameData.Instance.saveData.inventoryItemsAmount[i]);
                 }
             }
         }

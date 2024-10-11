@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4643398478084498428}
   - component: {fileID: 4643398478084498425}
   - component: {fileID: 4643398478084498426}
-  - component: {fileID: 4643398478084498427}
+  - component: {fileID: -7816176778106349521}
   m_Layer: 11
   m_Name: ManaPotion
   m_TagString: Item
@@ -100,7 +100,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.05499976}
   serializedVersion: 2
   m_Radius: 0.055
---- !u!114 &4643398478084498427
+--- !u!114 &-7816176778106349521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,11 +109,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4643398478084498429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c5b61f3b432095488ec6dddb711d004, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b7315d324059364a990708ae34a8065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
   gameManager: {fileID: 0}
   itemToAdd: {fileID: 3485498151918252955, guid: 0c41c312c6c89f543b702a4e9a6e7b35, type: 3}
-  healthToGive: 10
   amountToAdd: 1
+  manaToGive: 20

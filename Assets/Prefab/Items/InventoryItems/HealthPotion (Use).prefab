@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 406221240261775170}
   - component: {fileID: 1132565742331633902}
   - component: {fileID: 2721646138776383581}
-  - component: {fileID: 6506124343249222508}
+  - component: {fileID: -4297989022261503544}
   m_Layer: 5
   m_Name: HealthPotion (Use)
   m_TagString: Untagged
@@ -135,8 +135,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6506124343249222508}
-        m_TargetAssemblyTypeName: ItemUse, Assembly-CSharp
+      - m_Target: {fileID: -4297989022261503544}
+        m_TargetAssemblyTypeName: HealthUse, Assembly-CSharp
         m_MethodName: UseButton
         m_Mode: 1
         m_Arguments:
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc00740f5429c9c41a66d80b790326bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6506124343249222508
+--- !u!114 &-4297989022261503544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,10 +168,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3485498151918252955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91a9e51f1d80d1e4093a239cced7d191, type: 3}
+  m_Script: {fileID: 11500000, guid: 51c6d65a5a69e8748abfdc0c2b7728f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 918629119691600110, guid: 70f760f3843c9424db9085eb3b0c6d19, type: 3}
+  player: {fileID: 0}
+  ID: 1
   healthToGive: 10
 --- !u!1 &6362367740296974356
 GameObject:

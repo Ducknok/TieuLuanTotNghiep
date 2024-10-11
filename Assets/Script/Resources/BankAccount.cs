@@ -17,8 +17,8 @@ public class BankAccount : MonoBehaviour
     {
         this.coinBank = PlayerPrefs.GetFloat("Gold", 0f);
         this.soulBank = PlayerPrefs.GetFloat("Soul", 0f);
-        this.coinText.text = "x " + this.coinBank.ToString();
-        this.soulText.text = "x " + this.soulBank.ToString();
+        this.coinText.text = this.coinBank.ToString();
+        this.soulText.text = this.soulBank.ToString();
     }
     protected virtual void Awake()
     {
