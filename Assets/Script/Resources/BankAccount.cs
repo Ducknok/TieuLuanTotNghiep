@@ -31,14 +31,14 @@ public class BankAccount : MonoBehaviour
     {
         this.coinBank += cashCollected;
         DataManager.Instance.GoldDAta(coinBank);
-        this.coinText.text = "x " + this.coinBank.ToString();
+        this.coinText.text = this.coinBank.ToString();
         this.coinBank = PlayerPrefs.GetFloat("Gold");
     }
     public virtual void Soul(float cashCollected)
     {
         this.soulBank += cashCollected;
         DataManager.Instance.SoulData(soulBank);
-        this.soulText.text = "x " + this.soulBank.ToString();
+        this.soulText.text = this.soulBank.ToString();
         this.soulBank = PlayerPrefs.GetFloat("Soul");
     }
 }

@@ -69,6 +69,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] protected Vector2 knockbackSpeed;
     [SerializeField] protected bool knockback;
 
+    [Header("Unlock")]
+    [SerializeField] public bool unlockedDash;
+
 
     protected virtual void Start()
     {
@@ -77,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
         this.amountOfJumpsLeft = this.amountOfJumps;
         this.wallHopDirection.Normalize();
         this.wallJumpDirection.Normalize();
+        this.LoadUnlockDash();
     }
     protected virtual void Update()
     {
@@ -96,14 +100,14 @@ public class PlayerMovement : MonoBehaviour
     }
     protected virtual void CheckIfWallSliding()
     {
-        if (this.isTouchingWall && this.movementImputDirection == this.facingDirection && this.rb.velocity.y < 0)
-        {
-            this.isWallSliding = true;
-        }
-        else
-        {
-            this.isWallSliding = false;
-        }
+            if (this.isTouchingWall && this.movementImputDirection == this.facingDirection && this.rb.velocity.y < 0)
+            {
+                this.isWallSliding = true;
+            }
+            else
+            {
+                this.isWallSliding = false;
+            }
     }
 
     protected virtual void CheckSurroundings()
@@ -111,8 +115,7 @@ public class PlayerMovement : MonoBehaviour
         this.isGroundCheck = Physics2D.OverlapCircle(this.groundCheck.position, this.groundCheckRadius, this.whatIsGround);
 
         this.isTouchingWall = Physics2D.Raycast(this.wallCheck.position, this.transform.right, this.wallCheckDistance, this.whatIsGround);
-
-
+        
     }
 
     protected virtual void CheckIfCanJump()
@@ -200,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetButtonDown("Horizontal") && this.isTouchingWall)
         {
-            if (!this.isGroundCheck && this.movementImputDirection != facingDirection)
+            if (!this.isGroundCheck && this.movementImputDirection != this.facingDirection)
             {
                 this.canMove = false;
                 this.canFlip = false;
@@ -222,12 +225,16 @@ public class PlayerMovement : MonoBehaviour
             this.checkJumpMultiplier = false;
             this.rb.velocity = new Vector2(this.rb.velocity.x, this.rb.velocity.y * this.variableJumpHeightmultiplier);
         }
-        if (Input.GetButton("Dash"))
+        if (this.unlockedDash)
         {
-            //Debug.Log("Da an dash");
-            if (Time.time >= (this.lastDash + this.dashCoolDown))
-                this.AttemptToDash();
+            if (Input.GetButton("Dash"))
+            {
+                //Debug.Log("Da an dash");
+                if (Time.time >= (this.lastDash + this.dashCoolDown))
+                    this.AttemptToDash();
+            }
         }
+       
     }
 
     protected virtual void AttemptToDash()
@@ -291,9 +298,9 @@ public class PlayerMovement : MonoBehaviour
         {
             this.jumpTimer -= Time.deltaTime;
         }
-        if (wallJumpTimer > 0)
+        if (this.wallJumpTimer > 0)
         {
-            if (hasWallJumped && movementImputDirection == -lastWallJumpDirection)
+            if (this.hasWallJumped && this.movementImputDirection == -this.lastWallJumpDirection)
             {
                 this.rb.velocity = new Vector2(this.rb.velocity.y, 0.0f);
                 this.hasWallJumped = false;
@@ -345,7 +352,7 @@ public class PlayerMovement : MonoBehaviour
             this.canFlip = true;
             this.hasWallJumped = true;
             this.wallJumpTimer = this.wallJumpTimerSet;
-            lastWallJumpDirection = -facingDirection;
+            this.lastWallJumpDirection = -this.facingDirection;
         }
     }
     protected virtual void ApplyMovement()
@@ -369,7 +376,7 @@ public class PlayerMovement : MonoBehaviour
     }
     protected virtual void Flip()
     {
-        if (!this.isWallSliding && this.canFlip && !knockback)
+        if (!this.isWallSliding && this.canFlip && !this.knockback)
         {
             facingDirection *= -1;
             this.isFacingRight = !this.isFacingRight;
@@ -390,5 +397,9 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireSphere(this.groundCheck.position, this.groundCheckRadius);
 
         Gizmos.DrawLine(this.wallCheck.position, new Vector3(this.wallCheck.position.x + this.wallCheckDistance, this.wallCheck.position.y, this.wallCheck.position.z));
+    }
+    protected virtual void LoadUnlockDash()
+    {
+        this.unlockedDash = GameData.Instance.saveData.playerUnlockDash;
     }
 }

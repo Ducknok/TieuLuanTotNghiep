@@ -66,6 +66,7 @@ public class PlayerStats : MonoBehaviour
         this.currentHealth = PlayerPrefs.GetFloat("CurrentHealth");
         GameData.Instance.ClearAllDataList();
         GameManagerSingleton.Instance.GetComponent<Inventory>().InventoryToData();
+        //GameManagerSingleton.Instance.GetComponent<PlayerStats>.
         GameData.Instance.Save();
     }
 }

@@ -28,7 +28,6 @@ public class StoreItems : MonoBehaviour
         Debug.Log("da mua");
         if(this.itemBuyPrice <= BankAccount.Instance.coinBank)
         {
-            
             BankAccount.Instance.Money(-this.itemBuyPrice);
             this.inventory.CheckSlotsAvailability(this.itemToAdd, this.itemToAdd.name, this.amountToAdd);
         }

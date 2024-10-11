@@ -8,16 +8,24 @@ using System;
 [Serializable]
 public class SaveData
 {
+    //ITEMS
     public List<int> goToAddID = new List<int>();
     public List<string> inventoryItemsName = new List<string>();
     public List<int> inventoryItemsAmount = new List<int>();
+
+    //Player
+    public bool playerUnlockDash;
+
+
+
     
 }
 public class GameData : MonoBehaviour
 {
-    public SaveData saveData;
     [SerializeField] private static GameData instance;
     public static GameData Instance => instance;
+    public SaveData saveData;
+    
 
     private void Awake()
     {
@@ -76,6 +84,7 @@ public class GameData : MonoBehaviour
         this.saveData.goToAddID.Clear();
         this.saveData.inventoryItemsName.Clear();
         this.saveData.inventoryItemsAmount.Clear();
+        this.saveData.playerUnlockDash = false;
         this.Save();
     }
 }

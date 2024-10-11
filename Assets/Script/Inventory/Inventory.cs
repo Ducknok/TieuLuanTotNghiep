@@ -28,6 +28,7 @@ public class Inventory : MonoBehaviour
         this.isInstantiated = false;
         for(int i = 0; i < this.slots.Length; i++)
         {
+            Debug.Log(slots[i]);
             if (this.slots[i].transform.childCount > 0)
             {
                 this.slots[i].GetComponent<SlotsScript>().isUsed = true;
@@ -82,7 +83,7 @@ public class Inventory : MonoBehaviour
                 if(inventoryItems[itemName] <= 0)
                 {
                     Destroy(slots[i].transform.GetChild(0).gameObject);
-                    this.slots[i].GetComponent<SlotsScript>().isUsed = true;
+                    this.slots[i].GetComponent<SlotsScript>().isUsed = false;
                     this.inventoryItems.Remove(itemName);
                     this.ReorganizeInventory();
                 }
