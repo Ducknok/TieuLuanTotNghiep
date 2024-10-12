@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArrowProjectile : Projectile
 {
-
+    [SerializeField] protected LayerMask whatIsPlayer;
     protected override void Start()
     {
         base.Start();

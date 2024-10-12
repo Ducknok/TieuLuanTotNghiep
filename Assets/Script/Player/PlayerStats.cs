@@ -13,18 +13,24 @@ public class PlayerStats : MonoBehaviour
         deathChunkParticle,
         deathBloodParticle;
     [SerializeField] protected Image healthImg;
+    [SerializeField] protected Image manaImg;
     [SerializeField] protected GameObject hitPariticle;
     [SerializeField] protected GameObject gameOverImage;
     [SerializeField] protected Animator mainMenuAC;
     [SerializeField] public float maxHealth;
     [SerializeField] public float currentHealth;
+    [SerializeField] public float maxMana;
+    [SerializeField] public float currentMana;
     protected virtual void Start()
     {
         this.maxHealth = PlayerPrefs.GetFloat("MaxHealth", maxHealth);
+        this.maxMana = PlayerPrefs.GetFloat("MaxMana", maxMana);
         this.gameOverImage.SetActive(false);
         this.playerCtrl = this.transform.GetComponent<PlayerController>();
         this.currentHealth = this.maxHealth;
-        this.healthImg.fillAmount = currentHealth / 100;
+        this.currentMana = this.maxMana;
+        this.healthImg.fillAmount = this.currentHealth / 200;
+        this.manaImg.fillAmount = this.currentMana / 100;
         
     }
     protected virtual void Awake()
@@ -33,7 +39,8 @@ public class PlayerStats : MonoBehaviour
     }
     protected virtual void Update()
     {
-        this.healthImg.fillAmount = currentHealth / 100;
+        this.healthImg.fillAmount = currentHealth / 200;
+        this.manaImg.fillAmount = this.currentMana / 100;
         
         if (this.currentHealth <= 0.0f)
         {
@@ -44,12 +51,20 @@ public class PlayerStats : MonoBehaviour
             this.mainMenuAC.updateMode = AnimatorUpdateMode.UnscaledTime;
             this.Die();
         }
+        if(this.currentMana <= 0.0f)
+        {
+            Debug.Log("Khong du mana de dung spell");
+        }
     }
     public virtual void DecreaseHealth(float amount)
     {
         this.currentHealth -= amount;
         AudioManager.Instance.PlayAudio(AudioManager.Instance.hit);
         Instantiate(this.hitPariticle, this.transform.position, Quaternion.Euler(0f, 0f, 360f));
+    }
+    public virtual void DecreaseMana(float amount)
+    {
+        this.currentMana -= amount;
     }
     public virtual void Die()
     {
@@ -64,9 +79,10 @@ public class PlayerStats : MonoBehaviour
     {
         DataManager.Instance.CurrentHealthData(this.maxHealth);
         this.currentHealth = PlayerPrefs.GetFloat("CurrentHealth");
-        GameData.Instance.ClearAllDataList();
+        DataManager.Instance.CurrentManaData(this.maxMana);
+        this.currentMana = PlayerPrefs.GetFloat("CurrentMana");
+        //GameData.Instance.ClearAllDataList();
         GameManagerSingleton.Instance.GetComponent<Inventory>().InventoryToData();
-        //GameManagerSingleton.Instance.GetComponent<PlayerStats>.
         GameData.Instance.Save();
     }
 }

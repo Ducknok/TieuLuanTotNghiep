@@ -23,4 +23,8 @@ public class PlayerAttack : MonoBehaviour
     {
         PlayerController.PlayerCom.FinishAttack1();
     }
+    protected virtual void LoadFinishCastSpell()
+    {
+        PlayerController.PlayerCom.FinishCastSpell();
+    }
 }

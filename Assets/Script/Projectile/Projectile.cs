@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected LayerMask whatIsGround;
-    [SerializeField] protected LayerMask whatIsPlayer;
+    
     [SerializeField] protected Transform damagePosition;
     [SerializeField] protected AttackDetails attackDetails;
     protected float speed;

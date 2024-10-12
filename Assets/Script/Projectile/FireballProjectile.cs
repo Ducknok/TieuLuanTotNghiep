@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireballProjectile : Projectile
 {
+    [SerializeField] protected LayerMask whatIsPlayer;
     [SerializeField] protected GameObject target;
     protected override void Start()
     {

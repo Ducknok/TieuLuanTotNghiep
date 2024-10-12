@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private static PlayerController instance;
+    public static PlayerController Instance => instance;
     [SerializeField] protected PlayerMovement playerMove;
     public PlayerMovement PlayerMove => playerMove;
 

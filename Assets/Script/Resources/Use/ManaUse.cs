@@ -6,15 +6,6 @@ public class ManaUse : ItemUse
 {
     public float manaToGive;
 
-    public override void UseButton()
-    {
-        base.UseButton();
-        if (this.gameObject.name == "ManaPotion (Use)")
-        {
-            this.player.currentHealth += manaToGive;
-        }
-    }
-
     protected override void LoadPlayerController()
     {
         base.LoadPlayerController();
@@ -24,4 +15,14 @@ public class ManaUse : ItemUse
     {
         base.Start();
     }
+    public override void UseButton()
+    {
+        base.UseButton();
+        if (this.gameObject.name == "ManaPotion (Use)")
+        {
+            this.player.PlayerSta.currentMana += manaToGive;
+        }
+    }
+
+    
 }

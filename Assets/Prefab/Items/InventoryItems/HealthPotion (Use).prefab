@@ -173,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   ID: 1
-  healthToGive: 10
+  healthToGive: 70
 --- !u!1 &6362367740296974356
 GameObject:
   m_ObjectHideFlags: 0

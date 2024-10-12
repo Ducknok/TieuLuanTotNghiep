@@ -40,4 +40,12 @@ public class DataManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("MaxHealth", value);
     }
+    public virtual void CurrentManaData(float value)
+    {
+        PlayerPrefs.SetFloat("CurrentMana", value);
+    }
+    public virtual void MaxManaData(float value)
+    {
+        PlayerPrefs.SetFloat("MaxMana", value);
+    }
 }

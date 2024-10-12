@@ -19,7 +19,7 @@ public class HealthUse : ItemUse
         base.UseButton();
         if (this.gameObject.name == "HealthPotion (Use)")
         {
-            this.player.currentHealth += healthToGive;
+            this.player.PlayerSta.currentHealth += healthToGive;
         }
     }
 

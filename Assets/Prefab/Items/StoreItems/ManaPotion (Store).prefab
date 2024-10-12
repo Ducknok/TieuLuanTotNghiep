@@ -151,8 +151,8 @@ MonoBehaviour:
   itemToAdd: {fileID: 3485498151918252955, guid: 0c41c312c6c89f543b702a4e9a6e7b35, type: 3}
   itemSO: {fileID: 11400000, guid: 00c8b62ce902dbe44a5be188f4e61fc6, type: 2}
   amountToAdd: 1
-  itemSellPrice: 350
-  itemBuyPrice: 750
+  itemSellPrice: 500
+  itemBuyPrice: 1500
 --- !u!1 &5950060925169189721
 GameObject:
   m_ObjectHideFlags: 0

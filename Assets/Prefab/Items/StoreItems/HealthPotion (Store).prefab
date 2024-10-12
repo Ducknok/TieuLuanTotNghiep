@@ -287,5 +287,5 @@ MonoBehaviour:
   itemToAdd: {fileID: 3485498151918252955, guid: d5343fd1ea14b3249a1c6eff07ee5bd6, type: 3}
   itemSO: {fileID: 11400000, guid: 00c8b62ce902dbe44a5be188f4e61fc6, type: 2}
   amountToAdd: 1
-  itemSellPrice: 250
-  itemBuyPrice: 500
+  itemSellPrice: 350
+  itemBuyPrice: 1000

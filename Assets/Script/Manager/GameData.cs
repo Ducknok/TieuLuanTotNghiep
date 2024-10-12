@@ -15,10 +15,7 @@ public class SaveData
 
     //Player
     public bool playerUnlockDash;
-
-
-
-    
+    public bool playerUnlockAxeThrowing;
 }
 public class GameData : MonoBehaviour
 {
@@ -85,6 +82,7 @@ public class GameData : MonoBehaviour
         this.saveData.inventoryItemsName.Clear();
         this.saveData.inventoryItemsAmount.Clear();
         this.saveData.playerUnlockDash = false;
+        this.saveData.playerUnlockAxeThrowing = false;
         this.Save();
     }
 }

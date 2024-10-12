@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BulletProjectile : Projectile
 {
+    [SerializeField] protected LayerMask whatIsPlayer;
     [SerializeField] protected GameObject target;
     [SerializeField] protected Transform shooter;
+
     public Transform Shooter => shooter;
     
 

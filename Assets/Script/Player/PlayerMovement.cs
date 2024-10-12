@@ -314,14 +314,6 @@ public class PlayerMovement : MonoBehaviour
                 this.wallJumpTimer -= Time.deltaTime;
             }
         }
-        //Wall hop
-        //else if (this.isWallSliding && this.movementImputDirection == 0 && canJump)
-        //{
-        //    this.isWallSliding = false;
-        //    this.amountOfJumpsLeft--;
-        //    Vector2 forceToadd = new Vector2(this.wallHopForce * this.wallHopDirection.x * -this.facingDirection, this.wallHopForce * this.wallHopDirection.y);
-        //    this.rb.AddForce(forceToadd, ForceMode2D.Impulse);
-        //}
     }
     protected virtual void NormalJump()
     {

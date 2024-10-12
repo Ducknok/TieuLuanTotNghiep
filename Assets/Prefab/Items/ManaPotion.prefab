@@ -116,4 +116,4 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   itemToAdd: {fileID: 3485498151918252955, guid: 0c41c312c6c89f543b702a4e9a6e7b35, type: 3}
   amountToAdd: 1
-  manaToGive: 20
+  manaToGive: 50

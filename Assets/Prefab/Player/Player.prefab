@@ -98,6 +98,7 @@ MonoBehaviour:
   knockbackDuration: 0.1
   knockbackSpeed: {x: 10, y: 10}
   knockback: 0
+  unlockedDash: 0
 --- !u!1 &918629119569990217
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,8 +146,8 @@ GameObject:
   - component: {fileID: 918629119691600108}
   - component: {fileID: 918629119691600017}
   - component: {fileID: 918629119691600018}
-  - component: {fileID: 6464710642037756622}
   - component: {fileID: 7945865955685239215}
+  - component: {fileID: 8839535913500103523}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -170,6 +171,7 @@ Transform:
   - {fileID: 918629119569990218}
   - {fileID: 918629120134388092}
   - {fileID: 918629120015262077}
+  - {fileID: 1831696784824631344}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -348,52 +350,14 @@ MonoBehaviour:
   deathChunkParticle: {fileID: 8018059893440615517, guid: ca09949e26c383349bbea32cedef136a, type: 3}
   deathBloodParticle: {fileID: 2770540865367106982, guid: 0816b9c01f85c344cb80292176daae2e, type: 3}
   healthImg: {fileID: 6927761263873202027, guid: 71119bf2dabdee749a0ca210ffc54667, type: 3}
+  manaImg: {fileID: 0}
   hitPariticle: {fileID: 8086158511237388083, guid: c406771737c96174b83ea437c71ced36, type: 3}
   gameOverImage: {fileID: 0}
   mainMenuAC: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
---- !u!114 &6464710642037756622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918629119691600105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_LightType: 3
-  m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000fb61e15e0584c9a54157fed5e3d775d8a75729636dc752b747564aa1bfc1f9e4
-  m_LightCookieSprite: {fileID: 0}
-  m_UseNormalMap: 0
-  m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
-  m_ShadowIntensity: 0
-  m_ShadowVolumeIntensity: 0
-  m_PointLightInnerAngle: 360
-  m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 5
-  m_PointLightDistance: 3
-  m_PointLightQuality: 1
-  m_ShapeLightParametricSides: 5
-  m_ShapeLightParametricAngleOffset: 0
-  m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
-  m_ShapeLightFalloffOffset: {x: 0, y: 0}
-  m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
+  maxMana: 0
+  currentMana: 0
 --- !u!114 &7945865955685239215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,6 +371,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCollider: {fileID: 918629119691600111}
+--- !u!114 &8839535913500103523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918629119691600105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000fb61e15e0584c9a54157fed5e3d775d8a75729636dc752b747564aa1bfc1f9e4
+  m_ShapePath:
+  - {x: -0.48489466, y: 0.09604992, z: 0}
+  - {x: -0.30870333, y: 0.13348879, z: 0}
+  - {x: 0.00014249285, y: 0.5288106, z: 0}
+  - {x: 0.17309609, y: 0.084073365, z: 0}
+  - {x: 0.29447022, y: 0.101534344, z: 0}
+  - {x: 0.20522061, y: 0.64304334, z: 0}
+  - {x: 0.39546433, y: 0.6523496, z: 0}
+  - {x: 0.37075782, y: 1.084732, z: 0}
+  - {x: 0.14838798, y: 1.0970861, z: 0}
+  - {x: 0.02187355, y: 1.3591605, z: 0}
+  - {x: -0.08633351, y: 1.1341474, z: 0}
+  - {x: -0.28399524, y: 1.0106093, z: 0}
+  - {x: -0.3828261, y: 0.71411747, z: 0}
+  - {x: -0.9949372, y: 0.30284864, z: 0}
+  - {x: -0.37047124, y: 0.46704113, z: 0}
+  - {x: -0.13042347, y: 0.70040286, z: 0}
+  m_ShapePathHash: 655501311
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 23832
 --- !u!1 &918629119727939453
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9d9b88e65f8d5499957c68ca41e4e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCtrl: {fileID: 0}
   anim: {fileID: 0}
   attack1HitBoxPos: {fileID: 918629120015262077}
   whatIsDamageable:
@@ -524,3 +527,41 @@ MonoBehaviour:
   gotInput: 0
   isAttacking: 0
   isFirstAttack: 0
+  castSpellPosition: {fileID: 0}
+  projectile: {fileID: 0}
+  manaSpellCost: 10
+  timeBetweenCast: 0.5
+  timeSinceCast: 0
+  projectileDamage: 0
+  projectileSpeed: 0
+  projectileTravelDistance: 0
+--- !u!1 &8905490832518285998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1831696784824631344}
+  m_Layer: 9
+  m_Name: CastPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1831696784824631344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905490832518285998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.506, y: 0.734, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 918629119691600106}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

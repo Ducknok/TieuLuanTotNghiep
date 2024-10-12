@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OpenBag : MonoBehaviour
 {
+    [SerializeField] protected Animator itemsAC;
+    [SerializeField] protected Animator spellsAC;
     [SerializeField] public GameObject inventoryMenu;
     [SerializeField] protected bool isPaused;
     // Start is called before the first frame update
@@ -25,6 +27,8 @@ public class OpenBag : MonoBehaviour
             Time.timeScale = 0;
 
             this.inventoryMenu.SetActive(true);
+            this.itemsAC.updateMode = AnimatorUpdateMode.UnscaledTime;
+            this.spellsAC.updateMode = AnimatorUpdateMode.UnscaledTime;
             this.isPaused = true;
         }
         else if (Input.GetKeyDown(KeyCode.B) && this.isPaused)

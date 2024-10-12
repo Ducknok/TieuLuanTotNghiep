@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ItemUse : MonoBehaviour
 {
-    [SerializeField] protected PlayerStats player;
-    public PlayerStats Player => player;
+    [SerializeField] protected PlayerController player;
+    public PlayerController Player => player;
     public int ID;
 
 
@@ -16,7 +16,7 @@ public class ItemUse : MonoBehaviour
     protected virtual void LoadPlayerController()
     {
         if (this.player != null) return;
-        this.player = FindObjectOfType<PlayerStats>();
+        this.player = FindObjectOfType<PlayerController>();
     }
     public virtual void UseButton() { }
 }
