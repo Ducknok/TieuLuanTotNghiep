@@ -40,6 +40,7 @@ public class PlayerCombat : MonoBehaviour
     {
         this.anim = transform.GetComponentInParent<Animator>();
         this.anim.SetBool("canAttack", this.combatEnabled);
+        //this.unlockedAxeThrowing = false;
         this.LoadUnlockAxeThrowing();
     }
     protected virtual void Update()

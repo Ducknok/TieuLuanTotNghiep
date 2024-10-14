@@ -5,23 +5,29 @@ using UnityEngine.UI;
 
 public class SpellManager : MonoBehaviour
 {
-    //[SerializeField] private PlayerController playerController;
-    //public PlayerController PlayerController => playerController;
+    [SerializeField] private PlayerController playerController;
+    public PlayerController PlayerController => playerController;
     [SerializeField] protected GameObject 
         wallJumpOrb,
         dashOrb,
         axeThrowingOrb;
     private void OnEnable()
     {
-        if (PlayerController.Instance.PlayerMove.unlockedDash)
+        Debug.Log("hello");
+        Debug.Log(this.playerController.PlayerMove.unlockedDash.ToString());
+        Debug.Log(this.playerController.PlayerCom.unlockedAxeThrowing.ToString());
+
+        this.wallJumpOrb.SetActive(true);
+        if (this.playerController.PlayerMove.unlockedDash)
         {
+            
             this.dashOrb.SetActive(true);
         }
         else
         {
             this.dashOrb.SetActive(false);
         }
-        if (PlayerController.Instance.PlayerCom.unlockedAxeThrowing)
+        if (this.playerController.PlayerCom.unlockedAxeThrowing)
         {
             this.axeThrowingOrb.SetActive(true);
         }

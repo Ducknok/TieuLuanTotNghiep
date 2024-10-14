@@ -81,7 +81,7 @@ public class PlayerStats : MonoBehaviour
         this.currentHealth = PlayerPrefs.GetFloat("CurrentHealth");
         DataManager.Instance.CurrentManaData(this.maxMana);
         this.currentMana = PlayerPrefs.GetFloat("CurrentMana");
-        //GameData.Instance.ClearAllDataList();
+        GameData.Instance.ClearAllDataList();
         GameManagerSingleton.Instance.GetComponent<Inventory>().InventoryToData();
         GameData.Instance.Save();
     }
