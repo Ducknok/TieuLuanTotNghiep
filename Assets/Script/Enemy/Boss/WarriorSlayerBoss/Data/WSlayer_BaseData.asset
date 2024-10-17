@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff42f1a02745f748bde2962f6e213fd, type: 3}
+  m_Name: WSlayer_BaseData
+  m_EditorClassIdentifier: 
+  maxHealth: 5000
+  damageHopSpeed: 3
+  wallCheckDistance: 0.2
+  ledgeCheckDistance: 0.4
+  groundCheckRadius: 0.3
+  maxAgroDistance: 8
+  minAgroDistance: 7
+  stunResistance: 20
+  stunRecoveryTime: 1
+  closeRangeActionDistance: 2
+  hitParticle: {fileID: 8086158511237388083, guid: c406771737c96174b83ea437c71ced36, type: 3}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 512

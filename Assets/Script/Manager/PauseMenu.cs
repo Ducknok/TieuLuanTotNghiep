@@ -57,4 +57,8 @@ public class PauseMenu : MonoBehaviour
         this.pauseMenu.SetActive(true);
         this.isPaused = true;
     }
+    public void SaveGame()
+    {
+        GameData.Instance.Save();
+    }
 }
