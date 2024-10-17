@@ -45,7 +45,7 @@ public class PurpleBulletProjectile : Projectile
     }
     IEnumerator DestroyBullet()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3.5f);
         this.spawner.Despawn(this.gameObject.transform);
     }
     public void RotateTowardsPlayer(GameObject spawnedObject, Transform playerTransform)
