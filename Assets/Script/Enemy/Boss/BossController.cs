@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss1Controller : MonoBehaviour
+public class BossController : MonoBehaviour
 {
     [Header("BossHealth")]
     [SerializeField] protected BossHealth instance;

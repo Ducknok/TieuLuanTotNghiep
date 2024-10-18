@@ -125,7 +125,7 @@ public class EvilWizard2 : MonoBehaviour
         int counter = 0;
         while (counter < 12)
         {
-            var position = Random.Range(0, 3);
+            var position = Random.Range(0, 13);
             yield return new WaitForSeconds(faTime);
             Transform newBullet = PurpleBulletAboveSpawner.Instance.Spawn(PurpleBulletAboveSpawner.purpleBulletAbove, this.randomPosition[position].transform.position , this.randomPosition[position].transform.rotation);
             newBullet.gameObject.SetActive(true);
@@ -137,15 +137,22 @@ public class EvilWizard2 : MonoBehaviour
     }
     IEnumerator PurpeBulletCircle()
     {
-        this.changeState = 1f;
-        yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < position.Length; i++)
+        this.changeState = 3f;
+        int count = 0;
+        while(count < 3)
         {
-            Transform newBullet = PurpleBulletSpawner.Instance.Spawn(PurpleBulletSpawner.purpleBullet, this.position[i].position, this.position[i].rotation);
-            newBullet.gameObject.SetActive(true);
-            this.projectileScript = newBullet.GetComponent<PurpleBulletProjectile>();
-            this.projectileScript.FireProjectTile(this.speed, this.travelDistance, this.damage);
+            yield return new WaitForSeconds(0.5f);
+            for (int i = 0; i < position.Length; i++)
+            {
+                Transform newBullet = PurpleBulletSpawner.Instance.Spawn(PurpleBulletSpawner.purpleBullet, this.position[i].position, this.position[i].rotation);
+                newBullet.gameObject.SetActive(true);
+                this.projectileScript = newBullet.GetComponent<PurpleBulletProjectile>();
+                this.projectileScript.FireProjectTile(this.speed, this.travelDistance, this.damage);
+                
+            }
+            count++;
         }
+        
         this.changeState = 5f;
     }
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BossDamageReceiver : MonoBehaviour
 {
-    [SerializeField] protected Boss1Controller bossCtrl;
-    public Boss1Controller BossCtrl => bossCtrl;
+    [SerializeField] protected BossController bossCtrl;
+    public BossController BossCtrl => bossCtrl;
     protected virtual void Start()
     {
-        this.bossCtrl = transform.GetComponent<Boss1Controller>();
+        this.bossCtrl = transform.GetComponent<BossController>();
     }
     public virtual void Damage(AttackDetails attackDetails)
     {
