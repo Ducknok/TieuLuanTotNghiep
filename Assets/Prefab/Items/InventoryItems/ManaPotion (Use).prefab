@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 406221240261775170}
   - component: {fileID: 1132565742331633902}
   - component: {fileID: 2721646138776383581}
-  - component: {fileID: -4870787847327624796}
+  - component: {fileID: 708912849550281012}
   m_Layer: 5
   m_Name: ManaPotion (Use)
   m_TagString: Untagged
@@ -135,7 +135,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -4870787847327624796}
+      - m_Target: {fileID: 708912849550281012}
         m_TargetAssemblyTypeName: ManaUse, Assembly-CSharp
         m_MethodName: UseButton
         m_Mode: 1
@@ -159,7 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc00740f5429c9c41a66d80b790326bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-4870787847327624796
+  itemSO: {fileID: 11400000, guid: 00c8b62ce902dbe44a5be188f4e61fc6, type: 2}
+--- !u!114 &708912849550281012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,7 +174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   ID: 2
-  manaToGive: 50
+  itemSO: {fileID: 11400000, guid: 00c8b62ce902dbe44a5be188f4e61fc6, type: 2}
+  manaToGive: 20
 --- !u!1 &6362367740296974356
 GameObject:
   m_ObjectHideFlags: 0

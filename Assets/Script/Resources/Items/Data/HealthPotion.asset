@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
   itemCode: 3
-  itemName: HealthPotion
+  itemName: HealthPotion (Use)

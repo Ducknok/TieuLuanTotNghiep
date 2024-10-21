@@ -13,14 +13,10 @@ public class SpellManager : MonoBehaviour
         axeThrowingOrb;
     private void OnEnable()
     {
-        Debug.Log("hello");
-        Debug.Log(this.playerController.PlayerMove.unlockedDash.ToString());
-        Debug.Log(this.playerController.PlayerCom.unlockedAxeThrowing.ToString());
 
         this.wallJumpOrb.SetActive(true);
         if (this.playerController.PlayerMove.unlockedDash)
         {
-            
             this.dashOrb.SetActive(true);
         }
         else

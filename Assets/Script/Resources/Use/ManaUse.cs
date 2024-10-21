@@ -11,18 +11,19 @@ public class ManaUse : ItemUse
         base.LoadPlayerController();
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
     }
     public override void UseButton()
     {
         base.UseButton();
-        if (this.gameObject.name == "ManaPotion (Use)")
-        {
-            this.player.PlayerSta.currentMana += manaToGive;
-        }
+            if (this.itemSO.itemName == "ManaPotion (Use)")
+            {
+                this.player.PlayerSta.currentMana += manaToGive;
+            }
+        
     }
 
-    
+
 }

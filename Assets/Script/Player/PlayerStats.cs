@@ -39,6 +39,7 @@ public class PlayerStats : MonoBehaviour
     }
     protected virtual void Update()
     {
+        //TODO: xu ly khi full mau, ma thi ko the su dung health, mana potion
         this.healthImg.fillAmount = currentHealth / 200;
         this.manaImg.fillAmount = this.currentMana / 100;
         

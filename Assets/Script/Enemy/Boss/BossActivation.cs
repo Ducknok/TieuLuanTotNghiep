@@ -6,13 +6,13 @@ public class BossActivation : MonoBehaviour
 {
     [SerializeField] protected PlayerController playerCtrl;
     public PlayerController PlayerCtrl => playerCtrl;
+    [SerializeField] protected Animator anim;
     protected virtual void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player"))
         {
             BossUI.Instance.BossActivation();
             StartCoroutine(WaitForBoss());
-            
         }
     }
 
@@ -20,6 +20,7 @@ public class BossActivation : MonoBehaviour
     {
         var currentSpeed = this.playerCtrl.PlayerMove.movementSpeed;
         this.playerCtrl.PlayerMove.movementSpeed = 0f;
+        this.anim.enabled = true;
         yield return new WaitForSeconds(3f);
         this.playerCtrl.PlayerMove.movementSpeed = currentSpeed;
         Destroy(gameObject);

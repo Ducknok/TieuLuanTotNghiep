@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] protected GameManager gameManager;
     public GameManager GameManager => gameManager;
-    protected void Start()
+    protected void Awake()
     {
         this.LoadPlayerMovement();
         this.LoadPlayerCombat();

@@ -28,6 +28,7 @@ public class StoreNPC : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Da vao cua hang");
+        //TODO: Press F to open store here (Update)
         this.anim.SetBool("showStore", true);
     }
     public void ExitStore()

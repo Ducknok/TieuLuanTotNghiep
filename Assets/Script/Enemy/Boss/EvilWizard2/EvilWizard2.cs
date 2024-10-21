@@ -8,7 +8,6 @@ public enum BossEW2State
     RangeAttack,
     RangeAttack2,
     RangeAttackCircle,
-    Dead,
 }
 public class EvilWizard2 : MonoBehaviour
 {
@@ -40,9 +39,11 @@ public class EvilWizard2 : MonoBehaviour
 
     protected virtual void Start()
     {
-        this.state = BossEW2State.Idle;
+        this.anim.enabled = false;
+        this.anim.SetTrigger("intro");
+        StartCoroutine(IdleAftetIntro());
         this.anim = GetComponentInChildren<Animator>();
-        StartCoroutine(BossStates());
+        
     }
     IEnumerator BossStates()
     {
@@ -78,19 +79,25 @@ public class EvilWizard2 : MonoBehaviour
                 break;
             case BossEW2State.RangeAttack:
                 this.anim.SetBool("idle", false);
-                this.anim.SetTrigger("rangeAttack1");
+                this.anim.SetBool("rangeAttack2", false);
+                this.anim.SetBool("rangeAttack3", false);
+                this.anim.SetBool("rangeAttack1", true);
                 StartCoroutine(BulletFollowPlayer());
                 StartCoroutine(BossStates());
                 break;
             case BossEW2State.RangeAttack2:
                 this.anim.SetBool("idle", false);
-                this.anim.SetTrigger("rangeAttack2");
+                this.anim.SetBool("rangeAttack1", false);
+                this.anim.SetBool("rangeAttack3", false);
+                this.anim.SetBool("rangeAttack2", true);
                 StartCoroutine(PurpleBulletFromAbove());
                 StartCoroutine(BossStates());
                 break;
             case BossEW2State.RangeAttackCircle:
                 this.anim.SetBool("idle", false);
-                this.anim.SetTrigger("rangeAttack3");
+                this.anim.SetBool("rangeAttack1", false);
+                this.anim.SetBool("rangeAttack2", false);
+                this.anim.SetBool("rangeAttack3", true);
                 StartCoroutine(PurpeBulletCircle());
                 StartCoroutine(BossStates());
                 break;
@@ -101,7 +108,7 @@ public class EvilWizard2 : MonoBehaviour
     
     IEnumerator BulletFollowPlayer()
     {
-        this.changeState = 5f;
+        this.changeState = 4f;
         int counter = 0;
         while (counter < 5)
         {
@@ -111,12 +118,18 @@ public class EvilWizard2 : MonoBehaviour
             this.projectileScript = newBullet.GetComponent<PurpleBulletProjectile>();
             this.projectileScript.FireProjectTile(this.speed, this.travelDistance, this.damage);
             counter++;
+            if (counter == 5)
+            {
+                this.anim.SetBool("rangeAttack1", false);
+                break;
+            }
         }
+        
         this.changeState = 5f;
     }
     IEnumerator PurpleBulletFromAbove()
     {
-        this.changeState = 12f;
+        this.changeState = 11f;
         yield return new WaitForSeconds(startFA);
         StartCoroutine(PurbleBulletShooting());
     }
@@ -131,13 +144,20 @@ public class EvilWizard2 : MonoBehaviour
             newBullet.gameObject.SetActive(true);
             this.projectileAboveScript = newBullet.GetComponent<PurpleBulletAboveProjectile>();
             this.projectileAboveScript.FireProjectTile(this.speed, this.travelDistance, this.damage);
-            counter++;
+            Debug.Log(counter);
+            counter++;  
+            if(counter == 12)
+            {
+                this.anim.SetBool("rangeAttack2", false);
+                break;
+            }
         }
+        
         this.changeState = 5f;
     }
     IEnumerator PurpeBulletCircle()
     {
-        this.changeState = 3f;
+        this.changeState = 2f;
         int count = 0;
         while(count < 3)
         {
@@ -148,11 +168,24 @@ public class EvilWizard2 : MonoBehaviour
                 newBullet.gameObject.SetActive(true);
                 this.projectileScript = newBullet.GetComponent<PurpleBulletProjectile>();
                 this.projectileScript.FireProjectTile(this.speed, this.travelDistance, this.damage);
-                
             }
+            Debug.Log(count);
             count++;
+            if(count == 3)
+            {
+                this.anim.SetBool("rangeAttack3", false);
+                break;
+            }
         }
         
         this.changeState = 5f;
+    }
+    IEnumerator IdleAftetIntro()
+    {
+        //this.changeState = 5f;
+        yield return new WaitForSeconds(5f);
+        this.anim.SetBool("idle", true);
+        this.changeState = 5f;
+        StartCoroutine(BossStates());
     }
 }

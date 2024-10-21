@@ -9,8 +9,8 @@ public class Inventory : MonoBehaviour
     TextMeshProUGUI text;
     [SerializeField] public GameObject[] slots;
     [SerializeField] protected GameObject[] backPack;
-    [SerializeField] protected bool isInstantiated;
     [SerializeField] protected ItemList itemList;
+    [SerializeField] protected bool isInstantiated;
 
     public Dictionary<string, int> inventoryItems = new Dictionary<string, int>();
 
@@ -28,7 +28,7 @@ public class Inventory : MonoBehaviour
         this.isInstantiated = false;
         for(int i = 0; i < this.slots.Length; i++)
         {
-            Debug.Log(slots[i]);
+            //Debug.Log(slots[i]);
             if (this.slots[i].transform.childCount > 0)
             {
                 this.slots[i].GetComponent<SlotsScript>().isUsed = true;
@@ -129,9 +129,10 @@ public class Inventory : MonoBehaviour
     }
     public void DataToInventory()
     {
-        Debug.Log(GameData.Instance.saveData.goToAddID.Count);
+        //Debug.Log(GameData.Instance.saveData.goToAddID.Count);
         for(int i = 0; i < GameData.Instance.saveData.goToAddID.Count; i++)
         {
+            //Debug.Log(itemList.items.Count);
             for(int j = 0; j < itemList.items.Count; j++)
             {
                 if(itemList.items[j].ID == GameData.Instance.saveData.goToAddID[i])

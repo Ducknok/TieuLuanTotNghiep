@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 7237717439887401469}
   - component: {fileID: 4668407962476941056}
   - component: {fileID: 7775713336191455643}
-  - component: {fileID: 8355795575774959570}
+  - component: {fileID: 974521843406356818}
   m_Layer: 7
   m_Name: EvilWizard2
   m_TagString: Enemy
@@ -554,7 +554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossCtrl: {fileID: 4668407962476941056}
---- !u!114 &8355795575774959570
+--- !u!114 &974521843406356818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -563,18 +563,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7237717439887401470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18984ed269cd4f6448a1eb80dc28f19b, type: 3}
+  m_Script: {fileID: 11500000, guid: ac6b2be58b5d3464aaf1fdd7b97286d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathChunkParticle: {fileID: 8018059893440615517, guid: ca09949e26c383349bbea32cedef136a, type: 3}
-  deathBloodParticle: {fileID: 2770540865367106982, guid: 0816b9c01f85c344cb80292176daae2e, type: 3}
-  hitPariticle: {fileID: 8086158511237388083, guid: c406771737c96174b83ea437c71ced36, type: 3}
+  deathChunkParticle: {fileID: 0}
+  deathBloodParticle: {fileID: 0}
+  hitPariticle: {fileID: 0}
   healthCut: {fileID: 0}
-  anim: {fileID: 7237717441484684670}
+  anim: {fileID: 0}
   healthImg: {fileID: 0}
-  healthBG: {fileID: 0}
-  maxHealth: 50000
+  maxHealth: 0
   currentHealth: 0
+  pbSpawn: {fileID: 0}
+  pbAbSpawn: {fileID: 0}
 --- !u!1 &7237717440159479492
 GameObject:
   m_ObjectHideFlags: 0

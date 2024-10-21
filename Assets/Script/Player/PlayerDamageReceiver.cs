@@ -7,7 +7,7 @@ public class PlayerDamageReceiver : MonoBehaviour
     [SerializeField] protected PlayerController playerCtrl;
     public PlayerController PlayerCtrl => playerCtrl;
     // Start is called before the first frame update
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         this.playerCtrl = transform.GetComponent<PlayerController>();
     }

@@ -25,7 +25,7 @@ public class StoreItems : MonoBehaviour
 
     public virtual void BuyItem()
     {
-        Debug.Log("da mua");
+        //Debug.Log("da mua");
         if(this.itemBuyPrice <= BankAccount.Instance.coinBank)
         {
             BankAccount.Instance.Money(-this.itemBuyPrice);

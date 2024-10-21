@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InventoryButton : MonoBehaviour
 {
+    [SerializeField] protected ItemSO itemSO;
     protected Inventory inventory;
     protected GameManagerSingleton gameManager;
     // Start is called before the first frame update
@@ -15,6 +16,6 @@ public class InventoryButton : MonoBehaviour
 
     public virtual void UseItem()
     {
-        this.inventory.UseInventoryItems(gameObject.name);
+        this.inventory.UseInventoryItems(this.itemSO.itemName);
     }
 }

@@ -6,9 +6,9 @@ public class HealthUse : ItemUse
 {
     public float healthToGive;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
     }
     protected override void LoadPlayerController()
     {
@@ -17,11 +17,9 @@ public class HealthUse : ItemUse
     public override void UseButton()
     {
         base.UseButton();
-        if (this.gameObject.name == "HealthPotion (Use)")
+        if (this.itemSO.itemName == "HealthPotion (Use)")
         {
             this.player.PlayerSta.currentHealth += healthToGive;
         }
     }
-
-    
 }
