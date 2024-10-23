@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
+    [Header("Component")]
     [SerializeField] private static PlayerStats instance;
     public static PlayerStats Instance => instance; 
     [SerializeField] protected PlayerController playerCtrl;
@@ -12,15 +13,21 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] protected GameObject
         deathChunkParticle,
         deathBloodParticle;
-    [SerializeField] protected Image healthImg;
-    [SerializeField] protected Image manaImg;
     [SerializeField] protected GameObject hitPariticle;
     [SerializeField] protected GameObject gameOverImage;
+    [SerializeField] protected Image healthImg;
+    [SerializeField] protected Image manaImg;
+    [SerializeField] protected Transform healthCut;
+    [SerializeField] protected Transform manaCut;
     [SerializeField] protected Animator mainMenuAC;
+
+    [Header("Atribute")]
     [SerializeField] public float maxHealth;
     [SerializeField] public float currentHealth;
     [SerializeField] public float maxMana;
     [SerializeField] public float currentMana;
+    [SerializeField] protected const float HealthBar_Width = 500f;
+    [SerializeField] protected const float ManaBar_Width = 300f;
     protected virtual void Start()
     {
         this.maxHealth = PlayerPrefs.GetFloat("MaxHealth", maxHealth);
@@ -62,10 +69,24 @@ public class PlayerStats : MonoBehaviour
         this.currentHealth -= amount;
         AudioManager.Instance.PlayAudio(AudioManager.Instance.hit);
         Instantiate(this.hitPariticle, this.transform.position, Quaternion.Euler(0f, 0f, 360f));
+        this.healthImg.fillAmount = currentHealth / 200;
+        Transform damageBar = Instantiate(this.healthCut, this.healthImg.transform);
+        damageBar.gameObject.SetActive(true);
+        damageBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(this.healthImg.fillAmount * HealthBar_Width, damageBar.GetComponent<RectTransform>().anchoredPosition.y);
+        damageBar.GetComponent<Image>().fillAmount = amount / 200;
+        //Debug.Log(damageBar.GetComponent<Image>().fillAmount);
+        damageBar.gameObject.AddComponent<HealthBarCutFallDown>();
     }
     public virtual void DecreaseMana(float amount)
     {
         this.currentMana -= amount;
+        this.manaImg.fillAmount = currentMana / 100;
+        Transform manaUsed = Instantiate(this.manaCut, this.manaImg.transform);
+        manaUsed.gameObject.SetActive(true);
+        manaUsed.GetComponent<RectTransform>().anchoredPosition = new Vector2(this.manaImg.fillAmount * ManaBar_Width, manaUsed.GetComponent<RectTransform>().anchoredPosition.y);
+        manaUsed.GetComponent<Image>().fillAmount = amount / 100;
+        Debug.Log(manaUsed.GetComponent<Image>().fillAmount);
+        manaUsed.gameObject.AddComponent<HealthBarCutFallDown>();
     }
     public virtual void Die()
     {

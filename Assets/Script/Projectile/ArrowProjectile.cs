@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class ArrowProjectile : Projectile
 {
+    [SerializeField] public ArrowSpawner spawner;
     [SerializeField] protected LayerMask whatIsPlayer;
     protected override void Start()
     {
         base.Start();
-        this.rb.velocity = this.transform.right * this.speed;
 
     }
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        
         if (!hasHitGround)
         {
             Collider2D damageHit = Physics2D.OverlapCircle(this.damagePosition.position, this.damageRadius, this.whatIsPlayer);
@@ -22,14 +23,16 @@ public class ArrowProjectile : Projectile
             if (damageHit)
             {
                 damageHit.transform.SendMessage("Damage", attackDetails);
-                Destroy(gameObject);
+                this.spawner.Despawn(this.gameObject.transform);
+                //Destroy(gameObject);
             }
             if (groundHit)
             {
                 this.hasHitGround = true;
                 this.rb.gravityScale = 0f;
                 this.rb.velocity = Vector2.zero;
-                Destroy(gameObject);
+                this.spawner.Despawn(this.gameObject.transform);
+                //Destroy(gameObject);
             }
             if (Mathf.Abs(this.xStartPos - this.transform.position.x) >= this.travelDistance && !this.isGravityOn)
             {
@@ -42,6 +45,7 @@ public class ArrowProjectile : Projectile
     protected override void Update()
     {
         base.Update();
+        this.rb.velocity = this.transform.right * this.speed;
         if (!hasHitGround)
         {
             this.attackDetails.position = this.transform.position;

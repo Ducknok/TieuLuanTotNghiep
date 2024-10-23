@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3fce834f4a3c78146aeb889eab0c7608, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
-  m_FlipY: 1
+  m_FlipX: 0
+  m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
@@ -142,15 +142,16 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 512
   damagePosition: {fileID: 903043463000457097}
   xStartPos: 0
   gravity: 0
   damageRadius: 0.18
   isGravityOn: 0
   hasHitGround: 0
+  spawner: {fileID: 0}
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 512
   target: {fileID: 0}
   shooter: {fileID: 0}
 --- !u!1 &2993885596389138173

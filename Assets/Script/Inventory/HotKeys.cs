@@ -5,18 +5,24 @@ using UnityEngine;
 
 public class HotKeys : MonoBehaviour
 {
+    //[SerializeField] protected GameData instance;
+    //public GameData Instance => instance;
     [SerializeField] protected HotKeyButton hotkeyOne;
     [SerializeField] protected HotKeyButton hotkeyTwo;
+    [SerializeField] protected GameObject attackHotkey;
+    [SerializeField] protected GameObject axeThrowingHotkey;
     [SerializeField] protected Inventory inventory;
 
     protected virtual void Start()
     {
         this.inventory = GameManagerSingleton.Instance.GetComponent<Inventory>();
+        this.axeThrowingHotkey.SetActive(false);
     }
     protected virtual void Update()
     {
         // Kiểm tra nhấn phím số 1
         this.AlphaHotkey();
+        this.CheckAttackHotkey();
         this.GetItemByName();
 
     }
@@ -52,6 +58,13 @@ public class HotKeys : MonoBehaviour
         {
             this.hotkeyTwo.UseItem();
             inventory.UseInventoryItems(hotkeyTwo.itemName);
+        }
+    }
+    protected virtual void CheckAttackHotkey()
+    {
+        if (GameData.Instance.saveData.playerUnlockAxeThrowing == true)
+        {
+            this.axeThrowingHotkey.SetActive(true);
         }
     }
 

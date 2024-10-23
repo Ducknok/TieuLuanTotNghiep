@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletProjectile : Projectile
 {
+    [SerializeField] protected BulletSpawner spawner;
     [SerializeField] protected LayerMask whatIsPlayer;
     [SerializeField] protected GameObject target;
     [SerializeField] protected Transform shooter;
@@ -15,8 +16,12 @@ public class BulletProjectile : Projectile
     {
         base.Start();
         this.target = GameObject.FindGameObjectWithTag("Player");
-        Vector2 moveDir = (this.target.transform.position - transform.position).normalized * speed;
-        this.rb.velocity = new Vector2(moveDir.x, moveDir.y);
+    }
+    protected override void Update()
+    {
+        base.Update();
+        this.transform.position = Vector2.MoveTowards(this.transform.position, this.target.transform.position, speed * Time.deltaTime);
+        this.RotateTowardsPlayer(this.gameObject, target.transform);
     }
     protected override void FixedUpdate()
     {
@@ -27,7 +32,8 @@ public class BulletProjectile : Projectile
         {
             damageHit.transform.SendMessage("Damage", attackDetails);
             //BulletSpawner.Instance.Despawn(this.transform);
-            Destroy(gameObject);
+            this.spawner.Despawn(this.gameObject.transform);
+            //Destroy(gameObject);
             
         }
         if (groundHit)
@@ -35,8 +41,7 @@ public class BulletProjectile : Projectile
             this.hasHitGround = true;
             this.rb.gravityScale = 0f;
             this.rb.velocity = Vector2.zero;
-            //BulletSpawner.Instance.Despawn(this.transform);
-            Destroy(gameObject);
+            this.spawner.Despawn(this.gameObject.transform);
             
         }
     }
@@ -48,4 +53,17 @@ public class BulletProjectile : Projectile
     {
         base.FireProjectTile(speed, travelDistance, damage);
     }
+    public void RotateTowardsPlayer(GameObject spawnedObject, Transform playerTransform)
+    {
+        // Calculate the direction from the spawned object to the player
+        Vector2 direction = (playerTransform.position - spawnedObject.transform.position).normalized;
+
+        // Calculate the angle in degrees from the direction vector
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Rotate the spawned object to face the player
+        spawnedObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
+
+    
 }

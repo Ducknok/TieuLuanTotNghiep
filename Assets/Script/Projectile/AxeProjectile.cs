@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AxeProjectile : Projectile
 {
+    //[SerializeField] public AxeSpawner spawner;
     [SerializeField] protected LayerMask whatIsEnemy;
     [SerializeField] protected GameObject axeHitParticle;
 
@@ -14,6 +15,7 @@ public class AxeProjectile : Projectile
     }
     protected override void FixedUpdate()
     {
+        
         if (!hasHitGround)
         {
             Collider2D damageHit = Physics2D.OverlapCircle(this.damagePosition.position, this.damageRadius, this.whatIsEnemy);
@@ -24,6 +26,7 @@ public class AxeProjectile : Projectile
 
                 damageHit.transform.parent.SendMessage("Damage", attackDetails);
                 Instantiate(this.axeHitParticle, this.transform.position, this.transform.rotation);
+                //this.spawner.Despawn(this.gameObject.transform);
                 Destroy(gameObject);
             }
             if (groundHit)
@@ -31,6 +34,7 @@ public class AxeProjectile : Projectile
                 this.hasHitGround = true;
                 this.rb.gravityScale = 0f;
                 this.rb.velocity = Vector2.zero;
+                //this.spawner.Despawn(this.gameObject.transform);
                 Destroy(gameObject);
             }
             if (Mathf.Abs(this.xStartPos - this.transform.position.x) >= this.travelDistance && !this.isGravityOn)
@@ -49,6 +53,7 @@ public class AxeProjectile : Projectile
     protected override void Update()
     {
         base.Update();
+        //this.rb.velocity = this.transform.right * this.speed;
         if (!hasHitGround)
         {
             this.attackDetails.position = this.transform.position;

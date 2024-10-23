@@ -12,8 +12,6 @@ public class PurpleBulletProjectile : Projectile
     {
         base.Start();
         this.target = GameObject.FindGameObjectWithTag("Player");
-        
-        
     }
     public override void FireProjectTile(float speed, float travelDistance, float damage)
     {
