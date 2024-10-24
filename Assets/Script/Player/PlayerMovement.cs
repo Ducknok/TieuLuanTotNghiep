@@ -8,8 +8,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected Animator anim;
     [SerializeField] protected Transform groundCheck;
+    [SerializeField] protected Transform rayCastOrigin;
     [SerializeField] protected Transform wallCheck;
     [SerializeField] protected LayerMask whatIsGround;
+    protected RaycastHit2D hit2D;
 
     [Header("Movement")]
     [SerializeField] protected float movementImputDirection;
