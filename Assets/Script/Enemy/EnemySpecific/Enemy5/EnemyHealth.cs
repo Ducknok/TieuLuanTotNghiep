@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     [SerializeField]
     protected GameObject

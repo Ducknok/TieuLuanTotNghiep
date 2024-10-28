@@ -141,7 +141,7 @@ public class EnemyController : MonoBehaviour
     }
     private void UpdateDeadState()
     {
-        
+
     }
     private void ExitDeadState()
     {
