@@ -49,7 +49,13 @@ public class PlayerStats : MonoBehaviour
         //TODO: xu ly khi full mau, ma thi ko the su dung health, mana potion
         this.healthImg.fillAmount = currentHealth / 200;
         this.manaImg.fillAmount = this.currentMana / 100;
-        
+
+        if (this.playerCtrl.PlayerCom.shieldActive == true)
+        {
+            Debug.Log("Block");
+            return;
+        }
+
         if (this.currentHealth <= 0.0f)
         {
             AudioManager.Instance.PlayAudio(AudioManager.Instance.dead);

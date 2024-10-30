@@ -32,6 +32,8 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] protected float projectileDamage;
     [SerializeField] protected float projectileSpeed;
     [SerializeField] protected float projectileTravelDistance;
+    [Header("Shield")]
+    [SerializeField] public GameObject shieldActive;
     [Header("Unlock Spell")]
     [SerializeField] public bool unlockedAxeThrowing;
     
@@ -41,13 +43,14 @@ public class PlayerCombat : MonoBehaviour
         this.anim = transform.GetComponentInParent<Animator>();
         this.anim.SetBool("canAttack", this.combatEnabled);
         //this.unlockedAxeThrowing = false;
-        this.LoadUnlockAxeThrowing();
+        //this.LoadUnlockAxeThrowing();
     }
     protected virtual void Update()
     {
         this.CheckCombatInput();
         this.CheckAttack();
         this.CastSpell();
+        this.Shield();
     }
     protected virtual void CheckCombatInput()
     {
@@ -96,12 +99,12 @@ public class PlayerCombat : MonoBehaviour
                 //StartCoroutine(CastCourotine());
                 this.anim.SetBool("isCasting", true);
                 this.projectileDamage = Mathf.Round(Random.Range(15f, 20f));
-                Transform newaxe = AxeSpawner.Instance.Spawn(AxeSpawner.axe, this.castSpellPosition.position, this.castSpellPosition.rotation);
-                newaxe.gameObject.SetActive(true);
-                this.projectile = newaxe.GetComponent<AxeProjectile>();
+                Transform newAxe = AxeSpawner.Instance.Spawn(AxeSpawner.axe, this.castSpellPosition.position, this.castSpellPosition.rotation);
+                newAxe.gameObject.SetActive(true);
+                this.projectile = newAxe.GetComponent<AxeProjectile>();
                 this.projectile.FireProjectTile(this.projectileSpeed, this.projectileTravelDistance, this.projectileDamage);
                 this.playerCtrl.PlayerSta.DecreaseMana(manaSpellCost);
-                this.anim.SetBool("isCasting", false);
+                //this.anim.SetBool("isCasting", false);
                 timeSinceCast = 0;
             }
             else
@@ -110,6 +113,19 @@ public class PlayerCombat : MonoBehaviour
             }
         }
         
+    }
+    protected virtual void Shield()
+    {
+        if (Input.GetKey(KeyCode.L))
+        {
+            this.shieldActive.SetActive(true);
+            this.anim.SetBool("shield", true);  
+        }
+        else
+        {
+            this.shieldActive.SetActive(false);
+            this.anim.SetBool("shield", false);   
+        }
     }
     public virtual void CheckAttackHitBox()
     {
