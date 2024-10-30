@@ -14,8 +14,9 @@ public class SaveData
     public List<int> inventoryItemsAmount = new List<int>();
 
     //Player
-    public bool playerUnlockDash;
-    public bool playerUnlockAxeThrowing;
+    public bool playerUnlockedDash;
+    public bool playerUnlockedAxeThrowing;
+    public bool playerUnlockedShield;
 }
 public class GameData : MonoBehaviour
 {
@@ -81,8 +82,9 @@ public class GameData : MonoBehaviour
         this.saveData.goToAddID.Clear();
         this.saveData.inventoryItemsName.Clear();
         this.saveData.inventoryItemsAmount.Clear();
-        this.saveData.playerUnlockDash = false;
-        this.saveData.playerUnlockAxeThrowing = false;
+        //this.saveData.playerUnlockedDash = false;
+        //this.saveData.playerUnlockedAxeThrowing = false;
+        //this.saveData.playerUnlockedShield = false;
         this.Save();
     }
 }

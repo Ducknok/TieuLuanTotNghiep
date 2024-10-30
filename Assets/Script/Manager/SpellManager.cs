@@ -10,7 +10,8 @@ public class SpellManager : MonoBehaviour
     [SerializeField] protected GameObject 
         wallJumpOrb,
         dashOrb,
-        axeThrowingOrb;
+        axeThrowingOrb,
+        shieldOrb;
     private void OnEnable()
     {
 
@@ -30,6 +31,14 @@ public class SpellManager : MonoBehaviour
         else
         {
             this.axeThrowingOrb.SetActive(false);
+        }
+        if (this.playerController.PlayerCom.unlockedShield)
+        {
+            this.shieldOrb.SetActive(true);
+        }
+        else
+        {
+            this.shieldOrb.SetActive(false);
         }
     }
 }

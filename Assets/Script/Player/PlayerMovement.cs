@@ -394,6 +394,6 @@ public class PlayerMovement : MonoBehaviour
     }
     protected virtual void LoadUnlockDash()
     {
-        this.unlockedDash = GameData.Instance.saveData.playerUnlockDash;
+        this.unlockedDash = GameData.Instance.saveData.playerUnlockedDash;
     }
 }

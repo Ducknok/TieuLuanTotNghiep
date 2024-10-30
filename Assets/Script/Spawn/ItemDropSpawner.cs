@@ -6,8 +6,9 @@ public class ItemDropSpawner : Spawner
 {
     private static ItemDropSpawner instance;
     public static ItemDropSpawner Instance => instance;
+    [SerializeField] protected LayerMask whatIsGround;
     [SerializeField] protected float gameDropRate;
-    [SerializeField] private float dropRadius = 2f; // Phạm vi drop item
+    [SerializeField] private float dropRadius = 1f; // Phạm vi drop item
 
     protected virtual void Awake()
     {
@@ -16,7 +17,6 @@ public class ItemDropSpawner : Spawner
     public virtual List<ItemDropRate> Drop(List<ItemDropRate> dropList, Vector3 pos, Quaternion rot)
     {
         List<ItemDropRate> dropItems = new List<ItemDropRate>();
-        Vector2 randomPos = Random.insideUnitCircle * dropRadius;
 
         if (dropList.Count < 1) return dropItems;
         dropItems = this.DropItems(dropList);
@@ -24,9 +24,11 @@ public class ItemDropSpawner : Spawner
         foreach(ItemDropRate itemDropRate in dropItems)
         {
             ItemCode itemCode = itemDropRate.itemSO.itemCode;
-            Transform itemDrop = this.Spawn(itemCode.ToString(),pos, rot);
+            Vector2 randomPosition = (Vector2)pos + Random.insideUnitCircle * dropRadius;
+            Transform itemDrop = this.Spawn(itemCode.ToString(), randomPosition, rot);
             if (itemDrop == null) continue;
             itemDrop.gameObject.SetActive(true);
+            
         }
         return dropItems;
     }

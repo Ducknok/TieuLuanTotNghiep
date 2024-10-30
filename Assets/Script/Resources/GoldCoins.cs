@@ -18,7 +18,6 @@ public class GoldCoins : MonoBehaviour
     {
         if (collision.CompareTag("Ground") || collision.CompareTag("Wooden"))
         {
-            this.Col.isTrigger = false;
             this.rb.velocity = Vector2.zero;
         }
         if (collision.CompareTag("Player"))

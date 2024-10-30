@@ -32,7 +32,7 @@ public class UnlockDash : MonoBehaviour
         this.canvasUI.SetActive(true);
         yield return new WaitForSeconds(4f);
         this.instance.PlayerMove.unlockedDash = true;
-        GameData.Instance.saveData.playerUnlockDash = this.instance.PlayerMove.unlockedDash;
+        GameData.Instance.saveData.playerUnlockedDash = this.instance.PlayerMove.unlockedDash;
         GameData.Instance.Save();
         canvasUI.SetActive(false);
     }

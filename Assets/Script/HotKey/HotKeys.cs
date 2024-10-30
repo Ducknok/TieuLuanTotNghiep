@@ -11,12 +11,14 @@ public class HotKeys : MonoBehaviour
     [SerializeField] protected HotKeyButton hotkeyTwo;
     [SerializeField] protected GameObject attackHotkey;
     [SerializeField] protected GameObject axeThrowingHotkey;
+    [SerializeField] protected GameObject blockHotkey;
     [SerializeField] protected Inventory inventory;
 
     protected virtual void Start()
     {
         this.inventory = GameManagerSingleton.Instance.GetComponent<Inventory>();
         this.axeThrowingHotkey.SetActive(false);
+        this.blockHotkey.SetActive(false);
     }
     protected virtual void Update()
     {
@@ -62,9 +64,13 @@ public class HotKeys : MonoBehaviour
     }
     protected virtual void CheckAttackHotkey()
     {
-        if (GameData.Instance.saveData.playerUnlockAxeThrowing == true)
+        if (GameData.Instance.saveData.playerUnlockedAxeThrowing == true)
         {
             this.axeThrowingHotkey.SetActive(true);
+        }
+        if(GameData.Instance.saveData.playerUnlockedShield == true)
+        {
+            this.blockHotkey.SetActive(true);
         }
     }
 

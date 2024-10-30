@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnlockAxeThrowing : MonoBehaviour
+public class UnlockShield : MonoBehaviour
 {
     [SerializeField] private PlayerController instance;
     public PlayerController Instance => instance;
@@ -31,8 +31,8 @@ public class UnlockAxeThrowing : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         this.canvasUI.SetActive(true);
         yield return new WaitForSeconds(4f);
-        this.instance.PlayerCom.unlockedAxeThrowing = true;
-        GameData.Instance.saveData.playerUnlockedAxeThrowing = this.instance.PlayerCom.unlockedAxeThrowing;
+        this.instance.PlayerCom.unlockedShield = true;
+        GameData.Instance.saveData.playerUnlockedShield = this.instance.PlayerCom.unlockedShield;
         GameData.Instance.Save();
         canvasUI.SetActive(false);
     }

@@ -263,7 +263,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.110898614, y: 0.6864761}
+  m_Offset: {x: -0.14298896, y: 0.6864761}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -274,7 +274,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.55177677, y: 1.1827626}
+  m_Size: {x: 0.36910686, y: 1.1827626}
   m_EdgeRadius: 0
 --- !u!50 &918629119691600016
 Rigidbody2D:
@@ -415,7 +415,7 @@ MonoBehaviour:
   - {x: -0.13042347, y: 0.70040286, z: 0}
   m_ShapePathHash: 655501311
   m_Mesh: {fileID: 0}
-  m_InstanceId: 670244
+  m_InstanceId: 379316
 --- !u!1 &918629119727939453
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8437442098202745825}
   - component: {fileID: 7580348095178886628}
-  - component: {fileID: 6136469058806584655}
+  - component: {fileID: 1380364959616001191}
   m_Layer: 13
   m_Name: BlockDamage
   m_TagString: Untagged
@@ -589,7 +589,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.22780237, y: 0.6140552}
+  m_Offset: {x: 0.2549558, y: 0.6955161}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -600,9 +600,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24070174, y: 1.1352617}
+  m_Size: {x: 0.45299286, y: 1.2784352}
   m_EdgeRadius: 0
---- !u!114 &6136469058806584655
+--- !u!114 &1380364959616001191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -615,6 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockParticle: {fileID: 4134051224262147654, guid: 59c3ac4bc129dcb43817236c0ad098db, type: 3}
+  blockPosition: {fileID: 8437442098202745825}
 --- !u!1 &5945717402224979860
 GameObject:
   m_ObjectHideFlags: 0

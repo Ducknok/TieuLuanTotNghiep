@@ -34,8 +34,10 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] protected float projectileTravelDistance;
     [Header("Shield")]
     [SerializeField] public GameObject shieldActive;
+    [SerializeField] public bool shielded;
     [Header("Unlock Spell")]
     [SerializeField] public bool unlockedAxeThrowing;
+    [SerializeField] public bool unlockedShield;
     
 
     protected virtual void Start()
@@ -43,7 +45,8 @@ public class PlayerCombat : MonoBehaviour
         this.anim = transform.GetComponentInParent<Animator>();
         this.anim.SetBool("canAttack", this.combatEnabled);
         //this.unlockedAxeThrowing = false;
-        //this.LoadUnlockAxeThrowing();
+        this.LoadUnlockedAxeThrowing();
+        this.LoadUnlockedShield();
     }
     protected virtual void Update()
     {
@@ -116,16 +119,22 @@ public class PlayerCombat : MonoBehaviour
     }
     protected virtual void Shield()
     {
-        if (Input.GetKey(KeyCode.L))
+        if (this.unlockedShield)
         {
-            this.shieldActive.SetActive(true);
-            this.anim.SetBool("shield", true);  
+            if (Input.GetKey(KeyCode.K))
+            {
+                this.shieldActive.SetActive(true);
+                this.anim.SetBool("shield", true);
+                this.shielded = true;
+            }
+            else
+            {
+                this.shieldActive.SetActive(false);
+                this.anim.SetBool("shield", false);
+                this.shielded = false;
+            }
         }
-        else
-        {
-            this.shieldActive.SetActive(false);
-            this.anim.SetBool("shield", false);   
-        }
+        
     }
     public virtual void CheckAttackHitBox()
     {
@@ -156,8 +165,12 @@ public class PlayerCombat : MonoBehaviour
     {
         Gizmos.DrawWireSphere(this.attack1HitBoxPos.position, this.attack1Radius);
     }
-    protected virtual void LoadUnlockAxeThrowing()
+    protected virtual void LoadUnlockedAxeThrowing()
     {
-        this.unlockedAxeThrowing = GameData.Instance.saveData.playerUnlockAxeThrowing;
+        this.unlockedAxeThrowing = GameData.Instance.saveData.playerUnlockedAxeThrowing;
+    }
+    protected virtual void LoadUnlockedShield()
+    {
+        this.unlockedShield = GameData.Instance.saveData.playerUnlockedShield;
     }
 }
