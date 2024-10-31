@@ -37,23 +37,11 @@ public class ShootingRange : MonoBehaviour
         Gizmos.DrawWireSphere(this.transform.position, shootingRange);
     }
     public virtual void TriggerAttack()
-    {
+    {  
         Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bullet, this.rangeAttackPosition.position, this.rangeAttackPosition.rotation);
-        if (newBullet == null)
-        {
-            Debug.LogError("Bullet was not spawned correctly!");
-        }
         newBullet.gameObject.SetActive(true);
-
         BulletProjectile projectileScript = newBullet.GetComponent<BulletProjectile>();
-        if (projectileScript != null)
-        {
-            projectileScript.FireProjectTile(this.speed, this.travelDistance, this.damage);
-            projectileScript.SetShooter(this.rangeAttackPosition);
-        }
-        else
-        {
-            Debug.LogError("BulletProjectile script not found on the spawned bullet!");
-        }
+        projectileScript.FireProjectTile(this.speed, this.travelDistance, this.attackDetails.damageAmount);
+        projectileScript.SetShooter(this.rangeAttackPosition);
     }
 }

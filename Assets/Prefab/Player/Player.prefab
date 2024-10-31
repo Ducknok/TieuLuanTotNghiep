@@ -543,7 +543,9 @@ MonoBehaviour:
   projectileSpeed: 0
   projectileTravelDistance: 0
   shieldActive: {fileID: 0}
+  shielded: 0
   unlockedAxeThrowing: 0
+  unlockedShield: 0
 --- !u!1 &1147397356514148613
 GameObject:
   m_ObjectHideFlags: 0

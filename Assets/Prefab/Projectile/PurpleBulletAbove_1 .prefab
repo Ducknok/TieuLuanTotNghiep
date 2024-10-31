@@ -103,7 +103,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -663365661
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 8383388497487750666, guid: 4bd7e27cfe517944aa33b51a2eb1ce0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -178,6 +178,7 @@ MonoBehaviour:
   damageRadius: 0.6
   isGravityOn: 0
   hasHitGround: 0
+  instance: {fileID: -7639612485970718714, guid: 5971c7e0c988173418f700cb6c3ae1e6, type: 3}
   spawner: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2

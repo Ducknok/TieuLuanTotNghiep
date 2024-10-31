@@ -7,6 +7,7 @@ public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] protected PlayerController playerCtrl;
     public PlayerController PlayerCtrl => playerCtrl;
+    [SerializeField] public DamagePopup instance;
     [SerializeField] protected Animator anim;
     [SerializeField] protected Transform attack1HitBoxPos;
     
@@ -106,6 +107,7 @@ public class PlayerCombat : MonoBehaviour
                 newAxe.gameObject.SetActive(true);
                 this.projectile = newAxe.GetComponent<AxeProjectile>();
                 this.projectile.FireProjectTile(this.projectileSpeed, this.projectileTravelDistance, this.projectileDamage);
+               
                 this.playerCtrl.PlayerSta.DecreaseMana(manaSpellCost);
                 //this.anim.SetBool("isCasting", false);
                 timeSinceCast = 0;
@@ -140,6 +142,8 @@ public class PlayerCombat : MonoBehaviour
     {
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(this.attack1HitBoxPos.position, this.attack1Radius, this.whatIsDamageable);
         this.attack1Damage = Mathf.Round(Random.Range(20f, 30f));
+        bool isCritical = Random.Range(0, 100) < 30;
+        if (isCritical) this.attack1Damage *= 2;
         this.attackDetails.damageAmount = this.attack1Damage;
         this.attackDetails.position = this.transform.position;
         this.attackDetails.stunDamageAmount = this.stunDamageAmount;
@@ -148,6 +152,7 @@ public class PlayerCombat : MonoBehaviour
         {
             AudioManager.Instance.PlayAudio(AudioManager.Instance.attack);
             col.transform.parent.SendMessage("Damage", this.attackDetails);
+            this.instance.Create(this.attack1HitBoxPos.position, this.attackDetails.damageAmount, isCritical);
             
         }
     }

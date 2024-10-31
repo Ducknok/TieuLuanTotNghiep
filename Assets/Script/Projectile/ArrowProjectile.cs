@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArrowProjectile : Projectile
 {
-    //[SerializeField] public ArrowSpawner spawner;
+    public DamagePopup instance;
     [SerializeField] protected LayerMask whatIsPlayer;
     protected override void Start()
     {
@@ -22,8 +22,10 @@ public class ArrowProjectile : Projectile
 
             if (damageHit)
             {
+                bool isCritical = Random.Range(0, 100) < 30;
+                if (isCritical) this.attackDetails.damageAmount *= 2;
                 damageHit.transform.SendMessage("Damage", attackDetails);
-                //this.spawner.Despawn(this.gameObject.transform);
+                this.instance.Create(this.damagePosition.position, this.attackDetails.damageAmount, isCritical);
                 Destroy(gameObject);
             }
             if (groundHit)

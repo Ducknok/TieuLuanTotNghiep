@@ -83,7 +83,6 @@ public class EnemyController : MonoBehaviour
                 break;
         }
     }
-
     //--Moving state---------------------
     private void EnterMovingState()
     {

@@ -23,7 +23,7 @@ TagManager:
   - Enemy
   - Item
   - Map
-  - 
+  - DamageText
   - 
   - 
   - 
@@ -75,4 +75,7 @@ TagManager:
     locked: 0
   - name: Item
     uniqueID: 3841573311
+    locked: 0
+  - name: DamageText
+    uniqueID: 2274283335
     locked: 0

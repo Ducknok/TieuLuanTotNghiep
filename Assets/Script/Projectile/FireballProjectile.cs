@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireballProjectile : Projectile
 {
+    public DamagePopup instance;
     [SerializeField] protected LayerMask whatIsPlayer;
     [SerializeField] protected GameObject target;
     protected override void Start()
@@ -22,9 +23,13 @@ public class FireballProjectile : Projectile
     {
         base.FixedUpdate();
         Collider2D damageHit = Physics2D.OverlapCircle(this.damagePosition.position, this.damageRadius, this.whatIsPlayer);
+        this.attackDetails.damageAmount = Random.Range(100f, 200f);
+        bool isCritical = Random.Range(0, 100) < 30;
+        if (isCritical) this.attackDetails.damageAmount *= 2;
         if (damageHit)
         {
             damageHit.transform.SendMessage("Damage", attackDetails);
+            this.instance.Create(this.damagePosition.position, this.attackDetails.damageAmount, isCritical);
             Destroy(gameObject);
         }
     }

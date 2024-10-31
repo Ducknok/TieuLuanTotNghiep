@@ -5,6 +5,7 @@ using UnityEngine;
 public class AxeProjectile : Projectile
 {
     //[SerializeField] public AxeSpawner spawner;
+    [SerializeField] protected DamagePopup instance;
     [SerializeField] protected LayerMask whatIsEnemy;
     [SerializeField] protected GameObject axeHitParticle;
 
@@ -23,8 +24,10 @@ public class AxeProjectile : Projectile
 
             if (damageHit)
             {
-
+                bool isCritical = Random.Range(0, 100) < 30;
+                if (isCritical) this.attackDetails.damageAmount *= 2;
                 damageHit.transform.parent.SendMessage("Damage", attackDetails);
+                this.instance.Create(this.damagePosition.position, this.attackDetails.damageAmount, isCritical);
                 Instantiate(this.axeHitParticle, this.transform.position, this.transform.rotation);
                 //this.spawner.Despawn(this.gameObject.transform);
                 Destroy(gameObject);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MeleeAttackState : AttackState
 {
+
     protected D_MeleeAttack stateData;
     protected AttackDetails attackDetails;
 
@@ -48,10 +49,12 @@ public class MeleeAttackState : AttackState
     {
         base.TriggerAttack();
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(this.attackPosition.position, this.stateData.attackRadius, this.stateData.whatIsPlayer);
-
-        foreach(Collider2D collider in detectedObjects)
+        bool isCritical = Random.Range(0, 100) < 30;
+        if (isCritical) this.attackDetails.damageAmount *= 2;
+        foreach (Collider2D collider in detectedObjects)
         {
             collider.transform.SendMessage("Damage", this.attackDetails);
+            this.stateData.instance.Create(this.attackPosition.position, this.attackDetails.damageAmount, isCritical);
         }
     }
 }

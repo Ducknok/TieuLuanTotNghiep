@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletProjectile : Projectile
 {
+    public DamagePopup instance;
     [SerializeField] protected BulletSpawner spawner;
     [SerializeField] protected LayerMask whatIsPlayer;
     [SerializeField] protected GameObject target;
@@ -28,13 +29,18 @@ public class BulletProjectile : Projectile
         base.FixedUpdate();
         Collider2D damageHit = Physics2D.OverlapCircle(this.damagePosition.position, this.damageRadius, this.whatIsPlayer);
         Collider2D groundHit = Physics2D.OverlapCircle(this.damagePosition.position, this.damageRadius, this.whatIsGround);
+        this.attackDetails.damageAmount = Mathf.Round(Random.Range(10f, 20f));
+        bool isCritical = Random.Range(0, 100) < 30;
+        if (isCritical) this.attackDetails.damageAmount *= 2;
+
         if (damageHit)
         {
             damageHit.transform.SendMessage("Damage", attackDetails);
+            Debug.Log(attackDetails.damageAmount);
+            this.instance.Create(this.damagePosition.position, this.attackDetails.damageAmount, isCritical);
             //BulletSpawner.Instance.Despawn(this.transform);
             this.spawner.Despawn(this.gameObject.transform);
             //Destroy(gameObject);
-            
         }
         if (groundHit)
         {
@@ -48,10 +54,6 @@ public class BulletProjectile : Projectile
     public virtual void SetShooter(Transform shooter)
     {
         this.shooter = shooter;
-    }
-    public override void FireProjectTile(float speed, float travelDistance, float damage)
-    {
-        base.FireProjectTile(speed, travelDistance, damage);
     }
     public void RotateTowardsPlayer(GameObject spawnedObject, Transform playerTransform)
     {
