@@ -4,7 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : DucMonobehavior
 {
     [SerializeField] protected Transform respawnPoint;
     [SerializeField] protected GameObject player;
@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] protected bool respawn;
     [SerializeField] protected CinemachineVirtualCamera cvc;
 
-    protected virtual void Start()
+    protected override void Start()
     {
         AudioManager.Instance.mainMenu.Stop();
         cvc = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         this.CheckRespawn();
     }

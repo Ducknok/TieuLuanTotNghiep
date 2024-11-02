@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataManager : MonoBehaviour
+public class DataManager : DucMonobehavior
 {
     [SerializeField] protected static DataManager instance;
     public static DataManager Instance => instance;
 
-    protected void Awake()
+    protected override void Awake()
     {
         if (instance != null) Destroy(gameObject);
         instance = this;
     }
-    protected virtual void Start()
+    protected override void Start()
     {
         DontDestroyOnLoad(gameObject);
     }

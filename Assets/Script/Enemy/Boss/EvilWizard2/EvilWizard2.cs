@@ -9,7 +9,7 @@ public enum BossEW2State
     RangeAttack2,
     RangeAttackCircle,
 }
-public class EvilWizard2 : MonoBehaviour
+public class EvilWizard2 : DucMonobehavior
 {
     public BossEW2State state;
     [SerializeField] protected Animator anim;
@@ -37,7 +37,7 @@ public class EvilWizard2 : MonoBehaviour
     
 
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.anim.enabled = false;
         this.anim.SetTrigger("intro");

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformScaleScript : MonoBehaviour
+public class PlatformScaleScript : DucMonobehavior
 {
     //PLayer di theo moving platform
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -16,7 +16,7 @@ public class PlatformScaleScript : MonoBehaviour
             collision.transform.SetParent(this.transform);
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    protected override void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {

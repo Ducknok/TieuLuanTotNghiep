@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAfterImageSprite : MonoBehaviour
+public class PlayerAfterImageSprite : DucMonobehavior
 {
     [SerializeField] protected Transform player;
     [SerializeField] protected SpriteRenderer sr;
@@ -15,7 +15,7 @@ public class PlayerAfterImageSprite : MonoBehaviour
     [SerializeField] protected float alphaSet = 0.8f;
     [SerializeField] protected float alphaDecay = 0.85f;
 
-    protected virtual void OnEnable()
+    protected override void OnEnable()
     {
         this.sr = GetComponent<SpriteRenderer>();
         this.player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -27,7 +27,7 @@ public class PlayerAfterImageSprite : MonoBehaviour
         this.transform.rotation = this.player.rotation;
         this.timeActivated = Time.time;
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         this.alpha -= this.alphaDecay * Time.deltaTime;
         this.color = new Color(1f, 1f, 1f, alpha);

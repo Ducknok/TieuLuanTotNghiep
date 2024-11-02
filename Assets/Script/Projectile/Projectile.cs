@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : DucMonobehavior
 {
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected LayerMask whatIsGround;
@@ -17,15 +17,15 @@ public class Projectile : MonoBehaviour
     [SerializeField] protected bool isGravityOn;
     [SerializeField] protected bool hasHitGround;
 
-    protected virtual void Start() 
+    protected override void Start() 
     {
         this.rb = GetComponent<Rigidbody2D>();
         this.rb.gravityScale = 0.0f;
         this.isGravityOn = false;
         this.xStartPos = this.transform.position.x;
     }
-    protected virtual void Update(){}
-    protected virtual void FixedUpdate(){}
+    protected override void Update(){}
+    protected override void FixedUpdate(){}
 
     public virtual void FireProjectTile(float speed, float travelDistance, float damage)
     {
@@ -34,7 +34,7 @@ public class Projectile : MonoBehaviour
         this.attackDetails.damageAmount = damage;
     }
 
-    private void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(this.damagePosition.position, this.damageRadius);
     }

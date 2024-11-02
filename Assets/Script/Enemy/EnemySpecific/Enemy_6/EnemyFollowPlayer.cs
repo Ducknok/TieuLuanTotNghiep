@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFollowPlayer : MonoBehaviour
+public class EnemyFollowPlayer : DucMonobehavior
 {
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected Transform player;
@@ -18,7 +18,7 @@ public class EnemyFollowPlayer : MonoBehaviour
     [SerializeField] protected bool canDash = true;
 
     // Start is called before the first frame update
-    protected virtual void Awake()
+    protected override void Awake()
     {
         this.player = GameObject.FindGameObjectWithTag("Player").transform;
         this.rb = transform.GetComponentInParent<Rigidbody2D>();
@@ -27,7 +27,7 @@ public class EnemyFollowPlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected virtual void Update()
+    protected override void Update()
     {
         this.FlipTowardsPlayer();
         float distanceFromPlayer = Vector2.Distance(this.player.position, this.transform.parent.parent.position);
@@ -48,7 +48,7 @@ public class EnemyFollowPlayer : MonoBehaviour
     //{
     //    this.rb.velocity = new Vector2(this.speed * -1, 0);
     //}
-    private void OnDrawGizmosSelected()
+    protected override void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(this.transform.parent.parent.position, this.lineOfSite);

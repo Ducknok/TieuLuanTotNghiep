@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : DucMonobehavior
 {
-    protected virtual void Start()
+    protected override void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
         if(scene.name == "Main Menu")

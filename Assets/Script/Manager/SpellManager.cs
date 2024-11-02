@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpellManager : MonoBehaviour
+public class SpellManager : DucMonobehavior
 {
     [SerializeField] private PlayerController playerController;
     public PlayerController PlayerController => playerController;
@@ -12,7 +12,7 @@ public class SpellManager : MonoBehaviour
         dashOrb,
         axeThrowingOrb,
         shieldOrb;
-    private void OnEnable()
+    protected override void OnEnable()
     {
 
         this.wallJumpOrb.SetActive(true);

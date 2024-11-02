@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropManager : MonoBehaviour
+public class DropManager : DucMonobehavior
 {
     [SerializeField] private static DropManager instance;
     public static DropManager Instance => instance;
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
         if (DropManager.instance != null) Debug.LogError("Only 1 DropManager allow to exist");
         DropManager.instance = this;

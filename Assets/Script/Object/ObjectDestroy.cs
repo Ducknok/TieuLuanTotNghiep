@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectDestroy : MonoBehaviour
+public class ObjectDestroy : DucMonobehavior
 {
     [SerializeField] protected float timeToDestroy;
-    protected virtual void Start()
+    protected override void Start()
     {
         StartCoroutine(Destroy());
     }

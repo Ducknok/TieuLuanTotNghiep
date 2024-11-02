@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : DucMonobehavior
 {
     [SerializeField]
     protected GameObject
@@ -11,11 +11,11 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] protected GameObject hitPariticle;
     [SerializeField] public float maxHealth;
     [SerializeField] public float currentHealth;
-    protected virtual void Start()
+    protected override void Start()
     {
         this.currentHealth = this.maxHealth;
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         if (this.currentHealth <= 0.0f)
         {

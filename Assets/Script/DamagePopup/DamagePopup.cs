@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DamagePopup : MonoBehaviour
+public class DamagePopup : DucMonobehavior
 {
     private const float DISAPPEAR_TIMER_MAX = 1f;
     private static int sortingOrder;
@@ -15,11 +15,11 @@ public class DamagePopup : MonoBehaviour
     
     
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
         this.textMesh = transform.GetComponent<TextMeshPro>();
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         this.transform.position += this.moveVector * Time.deltaTime;
         this.moveVector -= this.moveVector * 8f * Time.deltaTime;

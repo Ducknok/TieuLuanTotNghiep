@@ -18,14 +18,14 @@ public class SaveData
     public bool playerUnlockedAxeThrowing;
     public bool playerUnlockedShield;
 }
-public class GameData : MonoBehaviour
+public class GameData : DucMonobehavior
 {
     [SerializeField] private static GameData instance;
     public static GameData Instance => instance;
     public SaveData saveData;
     
 
-    private void Awake()
+    protected override void Awake()
     {
         if(GameData.instance == null)
         {

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuFadeController : MonoBehaviour
+public class MenuFadeController : DucMonobehavior
 {
     [SerializeField] protected FadeUI fadeUI;
     [SerializeField] protected float fadeTime;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         this.fadeUI = GetComponent<FadeUI>();
         this.fadeUI.FadeUIOut(this.fadeTime);
@@ -23,10 +23,5 @@ public class MenuFadeController : MonoBehaviour
         this.fadeUI.FadeUIIn(fadeTime);
         yield return new WaitForSeconds(fadeTime);
         SceneManager.LoadScene(sceneToLoad);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -9,7 +9,7 @@ public class SkeletonSpawner : Spawner
 
     public static string skeleton = "Enemy_1";
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
         if (SkeletonSpawner.instance != null) Debug.LogError("Only 1 Skeleton allow to exist");
         SkeletonSpawner.instance = this;

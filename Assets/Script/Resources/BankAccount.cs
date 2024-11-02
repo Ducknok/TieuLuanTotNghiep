@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class BankAccount : MonoBehaviour
+public class BankAccount : DucMonobehavior
 {
     [SerializeField] protected static BankAccount instance;
     public static BankAccount Instance => instance;
@@ -13,14 +13,14 @@ public class BankAccount : MonoBehaviour
     [SerializeField] protected TextMeshProUGUI coinText;
     [SerializeField] protected TextMeshProUGUI soulText;
     
-    protected virtual void Start()
+    protected override void Start()
     {
         this.coinBank = PlayerPrefs.GetFloat("Gold", 0f);
         this.soulBank = PlayerPrefs.GetFloat("Soul", 0f);
         this.coinText.text = this.coinBank.ToString();
         this.soulText.text = this.soulBank.ToString();
     }
-    protected virtual void Awake()
+    protected override void Awake()
     {
         if(instance == null)
         {

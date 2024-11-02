@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : DucMonobehavior
 {
     [Header("Component")]
     [SerializeField] protected Rigidbody2D rb;
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public bool unlockedDash;
 
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.rb = transform.GetComponentInParent<Rigidbody2D>();
         this.anim = transform.GetComponentInParent<Animator>();
@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         this.wallJumpDirection.Normalize();
         this.LoadUnlockDash();
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         this.CheckInput();
         this.CheckMovementDirection();
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         this.CheckDash();
         this.CheckKnockback();
     }
-    protected virtual void FixedUpdate()
+    protected override void FixedUpdate()
     {
         this.ApplyMovement();
         this.CheckSurroundings();
@@ -386,7 +386,7 @@ public class PlayerMovement : MonoBehaviour
     {
         this.canFlip = true;
     }
-    protected void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(this.groundCheck.position, this.groundCheckRadius);
 

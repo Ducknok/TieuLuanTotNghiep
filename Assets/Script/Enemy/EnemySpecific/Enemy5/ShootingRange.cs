@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootingRange : MonoBehaviour
+public class ShootingRange : DucMonobehavior
 {
     protected AttackDetails attackDetails;
     [SerializeField] protected Transform player;
@@ -13,12 +13,12 @@ public class ShootingRange : MonoBehaviour
     [SerializeField] protected float damage;
     [SerializeField] protected float travelDistance;
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    protected virtual void Update()
+    protected override void Update()
     {
         float distanceFromPlayer = Vector2.Distance(this.player.position, this.transform.position);
         if (distanceFromPlayer <= shootingRange)
@@ -31,12 +31,12 @@ public class ShootingRange : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(this.transform.position, shootingRange);
     }
-    public virtual void TriggerAttack()
+    public override void TriggerAttack()
     {  
         Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bullet, this.rangeAttackPosition.position, this.rangeAttackPosition.rotation);
         newBullet.gameObject.SetActive(true);

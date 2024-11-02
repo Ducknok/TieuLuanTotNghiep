@@ -10,7 +10,7 @@ public class ItemDropSpawner : Spawner
     [SerializeField] protected float gameDropRate;
     [SerializeField] private float dropRadius = 1f; // Phạm vi drop item
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
         ItemDropSpawner.instance = this;
     }

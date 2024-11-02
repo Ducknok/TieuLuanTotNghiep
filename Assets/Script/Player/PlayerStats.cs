@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : DucMonobehavior
 {
     [Header("Component")]
     [SerializeField] private static PlayerStats instance;
@@ -28,7 +28,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public float currentMana;
     [SerializeField] protected const float HealthBar_Width = 500f;
     [SerializeField] protected const float ManaBar_Width = 300f;
-    protected virtual void Start()
+    protected override void Start()
     {
         this.maxHealth = PlayerPrefs.GetFloat("MaxHealth", maxHealth);
         this.maxMana = PlayerPrefs.GetFloat("MaxMana", maxMana);
@@ -40,11 +40,11 @@ public class PlayerStats : MonoBehaviour
         this.manaImg.fillAmount = this.currentMana / 100;
         
     }
-    protected virtual void Awake()
+    protected override void Awake()
     {
         PlayerStats.instance = this;
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         //TODO: xu ly khi full mau, ma thi ko the su dung health, mana potion
         this.healthImg.fillAmount = currentHealth / 200;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class StoreItems : MonoBehaviour
+public class StoreItems : DucMonobehavior
 {
     [SerializeField] protected Inventory inventory;
     [SerializeField] protected GameManagerSingleton gameManager;
@@ -14,7 +14,7 @@ public class StoreItems : MonoBehaviour
     [SerializeField] protected int itemBuyPrice;
     protected TextMeshProUGUI buyPriceText;
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.gameManager = GameManagerSingleton.Instance;
         this.inventory = gameManager.GetComponent<Inventory>();

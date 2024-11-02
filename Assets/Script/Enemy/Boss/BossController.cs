@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossController : MonoBehaviour
+public class BossController : DucMonobehavior
 {
     [Header("BossHealth")]
     [SerializeField] protected BossHealth instance;
     public BossHealth Instance => instance;
-    protected virtual void Start()
+    protected override void Start()
     {
         this.LoadBossHealth();
     }

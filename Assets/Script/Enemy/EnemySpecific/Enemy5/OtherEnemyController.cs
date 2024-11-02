@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OtherEnemyController : MonoBehaviour
+public class OtherEnemyController : DucMonobehavior
 {
     [Header("EnemyHealth")]
     [SerializeField] protected EnemyHealth instance;
     public EnemyHealth Instance => instance;
-    protected virtual void Start()
+    protected override void Start()
     {
         this.LoadEnemyDamageReceiver();
     }

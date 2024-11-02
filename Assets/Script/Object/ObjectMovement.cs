@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectMovement : MonoBehaviour
+public class ObjectMovement : DucMonobehavior
 {
     [SerializeField] protected Transform pointA, pointB;
     [SerializeField] protected float speed;
@@ -17,14 +17,14 @@ public class ObjectMovement : MonoBehaviour
     [SerializeField] protected bool moveToB;
     [SerializeField] protected bool canContinue;
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.moveToA = true;
         this.moveToB = false;
         this.canContinue = true;
         this.destroyCountdown = timeToDestroy;
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         if (this.shouldMove)
         {

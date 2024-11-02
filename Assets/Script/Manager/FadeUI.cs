@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FadeUI : MonoBehaviour
+public class FadeUI : DucMonobehavior
 {
     CanvasGroup canvasGroup;
-    protected virtual void Awake()
+    protected override void Awake()
     {
         this.canvasGroup = GetComponent<CanvasGroup>();
     }

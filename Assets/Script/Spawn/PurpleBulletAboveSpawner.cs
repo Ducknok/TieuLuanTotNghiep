@@ -9,7 +9,7 @@ public class PurpleBulletAboveSpawner : Spawner
 
     public static string purpleBulletAbove = "PurpleBulletAbove_1";
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
         if (PurpleBulletAboveSpawner.instance != null) Debug.LogError("Only 1 PurpleBulletAboveSpawner allow to exist");
         PurpleBulletAboveSpawner.instance = this;

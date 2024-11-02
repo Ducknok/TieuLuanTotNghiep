@@ -9,7 +9,7 @@ public class FireballSpawner : Spawner
 
     public static string fireball = "FireBall";
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
         if (FireballSpawner.instance != null) Debug.LogError("Only 1 FireballSpawner allow to exist");
         FireballSpawner.instance = this;

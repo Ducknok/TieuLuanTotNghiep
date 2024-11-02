@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossActivation : MonoBehaviour
+public class BossActivation : DucMonobehavior
 {
     [SerializeField] protected PlayerController playerCtrl;
     public PlayerController PlayerCtrl => playerCtrl;
     [SerializeField] protected Animator anim;
-    protected virtual void OnTriggerEnter2D(Collider2D collider)
+    protected override void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player"))
         {

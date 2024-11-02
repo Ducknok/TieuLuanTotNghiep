@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnlockWallJump : MonoBehaviour
+public class UnlockWallJump : DucMonobehavior
 {
     [SerializeField] protected GameObject canvasUI;
     [SerializeField] protected bool used;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !this.used)
         {

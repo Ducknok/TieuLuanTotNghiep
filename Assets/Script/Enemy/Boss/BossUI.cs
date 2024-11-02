@@ -4,21 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class BossUI : MonoBehaviour
+public class BossUI : DucMonobehavior
 {
     public GameObject bossPanel;
     public GameObject lasers;
     [SerializeField] protected static BossUI instance;
     public static BossUI Instance => instance;
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
         if(instance == null)
         {
             instance = this;
         }
     }
-    protected virtual void Start()
+    protected override void Start()
     {
         this.bossPanel.SetActive(false);
         this.lasers.SetActive(false);

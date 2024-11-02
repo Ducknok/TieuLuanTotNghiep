@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenBag : MonoBehaviour
+public class OpenBag : DucMonobehavior
 {
     [SerializeField] protected Animator itemsAC;
     [SerializeField] protected Animator spellsAC;
     [SerializeField] public GameObject inventoryMenu;
     [SerializeField] protected bool isPaused;
     // Start is called before the first frame update
-    protected virtual void Awake()
+    protected override void Awake()
     {
         Time.timeScale = 1;
         this.inventoryMenu.SetActive(false);
         this.isPaused = false;
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         this.Bag();
 

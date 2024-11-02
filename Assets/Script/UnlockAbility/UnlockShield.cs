@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnlockShield : MonoBehaviour
+public class UnlockShield : DucMonobehavior
 {
     [SerializeField] private PlayerController instance;
     public PlayerController Instance => instance;
     [SerializeField] protected GameObject canvasUI;
     [SerializeField] protected bool used;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         this.LoadPlayerController();
     }
@@ -18,7 +18,7 @@ public class UnlockShield : MonoBehaviour
         if (this.instance != null) return;
         this.instance = FindObjectOfType<PlayerController>();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !this.used)
         {

@@ -36,7 +36,7 @@ public class WarriorSlayer : Entity
     [SerializeField] protected D_DeadState deadStateData;
     [SerializeField] protected Transform meleeAttackPosition;
 
-    public override void Awake()
+    protected override void Awake()
     {
         base.Awake();
         this.moveState = new WSlayer_MoveState(this, this.stateMachine, "move", this.moveStateData, this);
@@ -49,11 +49,11 @@ public class WarriorSlayer : Entity
         this.deadState = new WSlayer_DeadState(this, this.stateMachine, "dead", this.deadStateData, this);
 
     }
-    protected virtual void Start()
+    protected override void Start()
     {
         this.stateMachine.Initialize(this.moveState);
     }
-    public override void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
         Gizmos.DrawWireSphere(this.meleeAttackPosition.position, this.meleeAttackStateData.attackRadius);

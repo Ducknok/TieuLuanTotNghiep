@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : DucMonobehavior
 {
     private enum State
     {
@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour
         groundDetected, 
         wallDetected;
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.alive = this.transform.Find("Alive").gameObject;
         this.aliveRb = this.aliveRb.GetComponent<Rigidbody2D>();
@@ -67,7 +67,7 @@ public class EnemyController : MonoBehaviour
         this.facingDirection = 1;
         
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         //Debug.Log("Check: " + this.alive.transform.position.x);
         switch (this.currentState)
@@ -228,7 +228,7 @@ public class EnemyController : MonoBehaviour
         }
         this.currentState = state;
     }
-    protected virtual void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(this.groundCheck.position, new Vector2(this.groundCheck.position.x, this.groundCheck.position.y - this.groundCheckDistance));

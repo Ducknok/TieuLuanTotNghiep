@@ -25,7 +25,7 @@ public class Enemy3 : Entity
     [SerializeField] private D_DeadState deadStateData;
     [SerializeField] private Transform meleeAttackPosition;
 
-    public override void Awake()
+    protected override void Awake()
     {
         base.Awake();
         this.moveState = new E3_MoveState(this, this.stateMachine, "move", this.moveStateData, this);
@@ -40,7 +40,7 @@ public class Enemy3 : Entity
 
         
     }
-    protected virtual void Start()
+    protected override void Start()
     {
         this.stateMachine.Initialize(this.moveState);
     }
@@ -57,7 +57,7 @@ public class Enemy3 : Entity
         }
     }
 
-    public override void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
         Gizmos.DrawWireSphere(this.meleeAttackPosition.position, this.meleeAttackStateData.attackRadius);

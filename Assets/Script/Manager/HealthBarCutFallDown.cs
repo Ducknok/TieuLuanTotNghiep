@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBarCutFallDown : MonoBehaviour
+public class HealthBarCutFallDown : DucMonobehavior
 {
     [SerializeField] protected RectTransform rectTransform;
     [SerializeField] protected Image image;
     [SerializeField] protected Color color;
     [SerializeField] protected float fallDownTimer;
     [SerializeField] protected float fadeTimer;
-    [SerializeField] protected virtual void Awake()
+
+    protected override void Awake()
     {
         this.rectTransform = transform.GetComponent<RectTransform>();
         this.image = transform.GetComponent<Image>();
@@ -18,7 +19,7 @@ public class HealthBarCutFallDown : MonoBehaviour
         this.fallDownTimer = 1f;
         this.fadeTimer = 1f;
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         this.fallDownTimer -= Time.deltaTime;
         if(this.fallDownTimer < 0)

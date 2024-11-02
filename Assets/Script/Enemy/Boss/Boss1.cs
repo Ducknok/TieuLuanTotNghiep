@@ -11,7 +11,7 @@ public enum Boss1State
     SpawnAttack,
     Dead,
 }
-public class Boss1 : MonoBehaviour
+public class Boss1 : DucMonobehavior
 {
     [SerializeField] protected Boss1State stateData;
     [SerializeField] protected Animator anim;
@@ -33,7 +33,7 @@ public class Boss1 : MonoBehaviour
     //[Header("Dead")]
     //[SerializeField] protected Image healthBar;
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.stateData = Boss1State.Idle;
         this.anim = GetComponent<Animator>();

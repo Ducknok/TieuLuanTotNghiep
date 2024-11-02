@@ -1,19 +1,19 @@
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class ParallaxCamera : MonoBehaviour
+public class ParallaxCamera : DucMonobehavior
 {
     public delegate void ParallaxCameraDelegate(float deltaMovement);
     public ParallaxCameraDelegate onCameraTranslate;
 
     private float oldPosition;
 
-    void Start()
+    protected override void Start()
     {
         oldPosition = transform.position.x;
     }
 
-    void Update()
+    protected override void Update()
     {
         if (transform.position.x != oldPosition)
         {

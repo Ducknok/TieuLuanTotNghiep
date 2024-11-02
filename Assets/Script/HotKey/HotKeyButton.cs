@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HotKeyButton : MonoBehaviour
+public class HotKeyButton : DucMonobehavior
 {
     [SerializeField] public string itemName;
     [SerializeField] public Button hotkeyButton;
@@ -12,16 +12,16 @@ public class HotKeyButton : MonoBehaviour
     [SerializeField] protected ItemUse itemUse;
     [SerializeField] protected Inventory inventory;
     [SerializeField] protected static Action onItemUsed;
-    protected virtual void Start()
+    protected override void Start()
     {
         this.inventory = GameManagerSingleton.Instance.GetComponent<Inventory>();
     }
-    protected virtual void OnEnable()
+    protected override void OnEnable()
     {
         
         //TODO: add sound effect healing here
     }
-    protected virtual void OnDisable()
+    protected override void OnDisable()
     {
         //TODO: remove sound effect healing 
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public class Entity : DucMonobehavior
 {
     [SerializeField]
     protected Transform
@@ -27,7 +27,7 @@ public class Entity : MonoBehaviour
     [SerializeField] protected bool isStunned;
     [SerializeField] protected bool isDead;
 
-    public virtual void Awake()
+    protected override void Awake()
     {
         this.facingDirection = 1;
         this.currentHealth = this.entityData.maxHealth;
@@ -41,7 +41,7 @@ public class Entity : MonoBehaviour
         this.stateMachine = new FiniteStateMachine();
     }
 
-    public virtual void Update()
+    protected override void Update()
     {
         this.stateMachine.currentState.LogicUpdate();
 
@@ -53,7 +53,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public virtual void FixedUpdate()
+    protected override void FixedUpdate()
     {
         this.stateMachine.currentState.PhysicsUpdate();
     }
@@ -142,7 +142,7 @@ public class Entity : MonoBehaviour
     {
         return Physics2D.Raycast(this.playerCheck.position, this.aliveGo.transform.right, this.entityData.closeRangeActionDistance, this.entityData.whatIsPlayer);
     }
-    public virtual void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         Gizmos.DrawLine(this.wallCheck.position, this.wallCheck.position + (Vector3)(Vector2.right * this.facingDirection * this.entityData.wallCheckDistance));
         Gizmos.DrawLine(this.ledgeCheck.position, this.ledgeCheck.position + (Vector3)(Vector2.down * this.entityData.ledgeCheckDistance));

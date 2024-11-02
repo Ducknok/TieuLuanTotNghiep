@@ -40,7 +40,7 @@ public class DummyCombat : DummyController
         this.brokenTopGO.SetActive(false);
         this.brokenBotGO.SetActive(false);
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         this.CheckKnockback();
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAfterImagePool : MonoBehaviour
+public class PlayerAfterImagePool : DucMonobehavior
 {
     [SerializeField] protected GameObject afterImagePrefab;
     [SerializeField] protected Queue<GameObject> availableObjects = new Queue<GameObject>();
@@ -10,7 +10,7 @@ public class PlayerAfterImagePool : MonoBehaviour
     protected static PlayerAfterImagePool instance;
     public static PlayerAfterImagePool Instance { get; private set; }
 
-    private void Awake()
+    protected override void Awake()
     {
         Instance = this;
         this.GrowPool();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat : DucMonobehavior
 {
     [SerializeField] protected PlayerController playerCtrl;
     public PlayerController PlayerCtrl => playerCtrl;
@@ -41,7 +41,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] public bool unlockedShield;
     
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.anim = transform.GetComponentInParent<Animator>();
         this.anim.SetBool("canAttack", this.combatEnabled);
@@ -49,7 +49,7 @@ public class PlayerCombat : MonoBehaviour
         this.LoadUnlockedAxeThrowing();
         this.LoadUnlockedShield();
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         this.CheckCombatInput();
         this.CheckAttack();
@@ -166,7 +166,7 @@ public class PlayerCombat : MonoBehaviour
     {
         this.anim.SetBool("isCasting", false);
     }
-    protected virtual void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(this.attack1HitBoxPos.position, this.attack1Radius);
     }

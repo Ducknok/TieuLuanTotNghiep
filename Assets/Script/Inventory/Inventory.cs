@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Inventory : MonoBehaviour
+public class Inventory : DucMonobehavior
 {
     TextMeshProUGUI text;
     [SerializeField] public GameObject[] slots;
@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
 
     public Dictionary<string, int> inventoryItems = new Dictionary<string, int>();
 
-    protected virtual void Start()
+    protected override void Start()
     {
         if(itemList != null)
         {

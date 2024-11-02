@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapManager : MonoBehaviour
+public class MapManager : DucMonobehavior
 {
     [SerializeField] private static MapManager instance;
     public static MapManager Instance => instance;
@@ -11,13 +11,13 @@ public class MapManager : MonoBehaviour
 
     public virtual bool IsLargeMapOpen { get; private set; }
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
         if (instance != null) return;
         instance = this;
         this.CloseLargeMap();
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))
         {

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HotKeys : MonoBehaviour
+public class HotKeys : DucMonobehavior
 {
     //[SerializeField] protected GameData instance;
     //public GameData Instance => instance;
@@ -14,13 +14,13 @@ public class HotKeys : MonoBehaviour
     [SerializeField] protected GameObject blockHotkey;
     [SerializeField] protected Inventory inventory;
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.inventory = GameManagerSingleton.Instance.GetComponent<Inventory>();
         this.axeThrowingHotkey.SetActive(false);
         this.blockHotkey.SetActive(false);
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         // Kiểm tra nhấn phím số 1
         this.AlphaHotkey();

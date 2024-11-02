@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Testing : MonoBehaviour
+public class Testing : DucMonobehavior
 {
     public DamagePopup instance;
-    protected virtual void Start()
+    protected override void Start()
     {
         //this.instance.Create(Vector3.zero, 300f);
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         Vector3 mouseScreenPosition = Input.mousePosition;
 

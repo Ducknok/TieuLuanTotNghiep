@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DummyController : MonoBehaviour
+public class DummyController : DucMonobehavior
 {
     [SerializeField] protected PlayerController pc;
     public PlayerController PC => pc;
-    protected virtual void Start()
+    protected override void Start()
     {
         this.LoadPlayerController();
     }

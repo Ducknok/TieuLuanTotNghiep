@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attractor : MonoBehaviour
+public class Attractor : DucMonobehavior
 {
     [SerializeField] protected Transform playerTransform;
     [SerializeField] protected GameObject items;
     [SerializeField] protected float speed = 5f;          
 
-    protected virtual void Start()
+    protected override void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
@@ -17,7 +17,7 @@ public class Attractor : MonoBehaviour
         }
     }
 
-    protected virtual void Update()
+    protected override void Update()
     {
         this.StartCoroutine(MoveToPlayer());
     }

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossDamageReceiver : MonoBehaviour
+public class BossDamageReceiver : DucMonobehavior
 {
     [SerializeField] protected BossController bossCtrl;
     public BossController BossCtrl => bossCtrl;
-    protected virtual void Start()
+    protected override void Start()
     {
         this.bossCtrl = transform.GetComponent<BossController>();
     }

@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Potion : MonoBehaviour
+public class Potion : DucMonobehavior
 {
     [SerializeField] protected Inventory inventory;
     [SerializeField] protected GameManagerSingleton gameManager;
     [SerializeField] protected GameObject itemToAdd;
     [SerializeField] protected int amountToAdd;
     
-    protected virtual void Start()
+    protected override void Start()
     {
         this.gameManager = GameManagerSingleton.Instance;
         this.inventory = gameManager.GetComponent<Inventory>();
     }
-    protected virtual  void OnTriggerEnter2D(Collider2D collider)
+    protected override  void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player"))
         {

@@ -9,7 +9,7 @@ public class BulletSpawner : Spawner
 
     public static string bullet = "Bullet_1";
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
         if (BulletSpawner.instance != null) Debug.LogError("Only 1 BulletSpawner allow to exist");
         BulletSpawner.instance = this;

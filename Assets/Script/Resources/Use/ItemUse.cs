@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemUse : MonoBehaviour
+public class ItemUse : DucMonobehavior
 {
     [SerializeField] protected PlayerController player;
     public PlayerController Player => player;
@@ -16,7 +16,7 @@ public class ItemUse : MonoBehaviour
     //}
 
     //Lien ket duoc ngay ca khi active = false
-    protected virtual void Awake()
+    protected override void Awake()
     {
         this.LoadPlayerController();
     }

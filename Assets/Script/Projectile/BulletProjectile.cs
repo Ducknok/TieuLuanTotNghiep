@@ -36,11 +36,8 @@ public class BulletProjectile : Projectile
         if (damageHit)
         {
             damageHit.transform.SendMessage("Damage", attackDetails);
-            Debug.Log(attackDetails.damageAmount);
-            this.instance.Create(this.damagePosition.position, this.attackDetails.damageAmount, isCritical);
-            //BulletSpawner.Instance.Despawn(this.transform);
             this.spawner.Despawn(this.gameObject.transform);
-            //Destroy(gameObject);
+            this.instance.Create(this.damagePosition.position, this.attackDetails.damageAmount, isCritical);
         }
         if (groundHit)
         {

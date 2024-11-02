@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossHealth : MonoBehaviour
+public class BossHealth : DucMonobehavior
 {
     [SerializeField]
     protected GameObject
@@ -17,14 +17,14 @@ public class BossHealth : MonoBehaviour
     [SerializeField] public float maxHealth;
     [SerializeField] public float currentHealth;
     [SerializeField] protected const float Bar_Width = 1500f;
-    protected virtual void Start()
+    protected override void Start()
     {
         this.anim = transform.GetComponentInChildren<Animator>();
         //this.healthCut = transform.Find("HealthCut");
         this.currentHealth = this.maxHealth;
         this.healthImg.fillAmount = this.currentHealth / 100;
     }
-    protected virtual void Update()
+    protected override void Update()
     {       
         if (this.currentHealth <= 0.0f)
         {

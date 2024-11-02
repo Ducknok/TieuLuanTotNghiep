@@ -27,7 +27,7 @@ public class Enemy2 : Entity
     [SerializeField] private Transform rangeAttackPosition;
     
 
-    public override void Awake()
+    protected override void Awake()
     {
         base.Awake();
         this.moveState = new E2_MoveState(this, this.stateMachine, "move", this.moveStateData, this);
@@ -42,7 +42,7 @@ public class Enemy2 : Entity
 
         
     }
-    protected virtual void Start()
+    protected override void Start()
     {
         this.stateMachine.Initialize(this.moveState);
     }
@@ -69,7 +69,7 @@ public class Enemy2 : Entity
         }
     }
 
-    public override void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
 

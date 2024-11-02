@@ -23,7 +23,7 @@ public class Enemy1 : Entity
 
     [SerializeField] protected Transform meleeAttackPosition;
 
-    public override void Awake()
+    protected override void Awake()
     {
         base.Awake();
         this.moveState = new E1_MoveState(this, this.stateMachine, "move", this.moveStateData, this);
@@ -36,11 +36,11 @@ public class Enemy1 : Entity
         this.deadState = new E1_DeadState(this, this.stateMachine, "dead", this.deadStateData, this);
         
     }
-    protected virtual void Start()
+    protected override void Start()
     {
         this.stateMachine.Initialize(this.moveState);
     }
-    public override void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
         Gizmos.DrawWireSphere(this.meleeAttackPosition.position, this.meleeAttackStateData.attackRadius);

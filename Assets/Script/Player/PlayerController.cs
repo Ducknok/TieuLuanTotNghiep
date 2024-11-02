@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : DucMonobehavior
 {
     [SerializeField] private static PlayerController instance;
     public static PlayerController Instance => instance;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] protected GameManager gameManager;
     public GameManager GameManager => gameManager;
-    protected void Awake()
+    protected override void Awake()
     {
         this.LoadPlayerMovement();
         this.LoadPlayerCombat();

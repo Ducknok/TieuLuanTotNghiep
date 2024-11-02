@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class Spawner : DucMonobehavior
 {
     [Header("Holder")]
     [SerializeField] protected Transform holder;
@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
     public int SpawnedCount => spawnedCount;
 
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.LoadHolder();
         this.LoadPrefabs();

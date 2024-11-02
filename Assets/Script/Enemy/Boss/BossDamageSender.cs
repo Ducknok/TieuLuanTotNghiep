@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossDamageSender : MonoBehaviour
+public class BossDamageSender : DucMonobehavior
 {
     [SerializeField] protected Transform attack1HitBoxPos;
     [SerializeField] protected Transform attack2HitBoxPos;
@@ -35,7 +35,7 @@ public class BossDamageSender : MonoBehaviour
                 col.transform.SendMessage("Damage", this.attackDetails);
         }
     }
-    protected virtual void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(this.attack1HitBoxPos.position, this.attack1Position);
         Gizmos.DrawWireCube(this.attack2HitBoxPos.position, this.attack2Position);

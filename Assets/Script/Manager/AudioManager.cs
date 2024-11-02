@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : DucMonobehavior
 {
     [SerializeField] protected AudioMixer musicMixer, effectsMixer;
     [SerializeField] public AudioSource hit, dead, backgroundMusic, gems, attack, mainMenu;
@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] protected float masterVol, effectVol;
     [SerializeField] protected Slider masterSlider, effectSlider;
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.PlayAudio(backgroundMusic);
         //this.masterSlider.value = this.masterVol;
@@ -33,12 +33,12 @@ public class AudioManager : MonoBehaviour
         this.effectSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0f);
 
     }
-    protected virtual void Update()
+    protected override void Update()
     {
         //this.MasterVolume();
         //this.EffectsVolume();
     }
-    protected virtual void Awake()
+    protected override void Awake()
     {
         if (instance != null) return;
         instance = this;

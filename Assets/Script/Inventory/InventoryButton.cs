@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryButton : MonoBehaviour
+public class InventoryButton : DucMonobehavior
 {
     [SerializeField] protected ItemSO itemSO;
     protected Inventory inventory;
     protected GameManagerSingleton gameManager;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         this.gameManager = GameManagerSingleton.Instance;
         this.inventory = gameManager.GetComponent<Inventory>();

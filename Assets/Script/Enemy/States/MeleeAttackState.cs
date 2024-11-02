@@ -49,6 +49,7 @@ public class MeleeAttackState : AttackState
     {
         base.TriggerAttack();
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(this.attackPosition.position, this.stateData.attackRadius, this.stateData.whatIsPlayer);
+        this.attackDetails.damageAmount = Mathf.Round(Random.Range(15f, 30f));
         bool isCritical = Random.Range(0, 100) < 30;
         if (isCritical) this.attackDetails.damageAmount *= 2;
         foreach (Collider2D collider in detectedObjects)

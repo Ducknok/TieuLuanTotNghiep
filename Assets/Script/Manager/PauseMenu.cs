@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenu : DucMonobehavior
 {
     [SerializeField] protected Animator continueAC;
     [SerializeField] protected Animator goToMenuAC;
     [SerializeField] protected GameObject pauseMenu;
     [SerializeField] protected bool isPaused;
     // Start is called before the first frame update
-    protected virtual  void Awake()
+    protected override  void Awake()
     {
         Time.timeScale = 1;
         this.pauseMenu.SetActive(false);
@@ -19,7 +19,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected virtual void Update()
+    protected override void Update()
     {
         this.Pause();
         

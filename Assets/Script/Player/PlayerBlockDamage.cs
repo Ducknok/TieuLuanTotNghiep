@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBlockDamage : MonoBehaviour
+public class PlayerBlockDamage : DucMonobehavior
 {
     [SerializeField] protected GameObject blockParticle;
     [SerializeField] protected Transform blockPosition;

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class ParallaxLayer : MonoBehaviour
+public class ParallaxLayer : DucMonobehavior
 {
     public float parallaxFactor;
 

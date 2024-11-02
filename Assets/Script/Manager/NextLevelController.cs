@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class NextLevelController : MonoBehaviour
+public class NextLevelController : DucMonobehavior
 {
     CanvasGroup canvasGroup;
     [SerializeField] protected FadeUI fadeUI;
     [SerializeField] protected string sceneToLoad;
     [SerializeField] protected float fadeTime;
 
-    void Start()
+    protected override void Start()
     {
         this.fadeUI = FindObjectOfType<FadeUI>();
         this.fadeUI.FadeUIOut(this.fadeTime);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {

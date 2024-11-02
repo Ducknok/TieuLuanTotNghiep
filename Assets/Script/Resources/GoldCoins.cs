@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldCoins : MonoBehaviour
+public class GoldCoins : DucMonobehavior
 {
     
     [SerializeField] protected Rigidbody2D rb;
@@ -10,11 +10,11 @@ public class GoldCoins : MonoBehaviour
     [SerializeField] protected float cashToGive;
     [SerializeField] protected float force;
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
     }
-    protected void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Ground") || collision.CompareTag("Wooden"))
         {

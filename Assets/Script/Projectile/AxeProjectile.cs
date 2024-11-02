@@ -24,13 +24,15 @@ public class AxeProjectile : Projectile
 
             if (damageHit)
             {
+                this.attackDetails.damageAmount = Mathf.Round(Random.Range(15f, 20f));
                 bool isCritical = Random.Range(0, 100) < 30;
                 if (isCritical) this.attackDetails.damageAmount *= 2;
                 damageHit.transform.parent.SendMessage("Damage", attackDetails);
-                this.instance.Create(this.damagePosition.position, this.attackDetails.damageAmount, isCritical);
-                Instantiate(this.axeHitParticle, this.transform.position, this.transform.rotation);
-                //this.spawner.Despawn(this.gameObject.transform);
                 Destroy(gameObject);
+                this.instance.Create(this.attackDetails.position, this.attackDetails.damageAmount, isCritical);
+                Instantiate(this.axeHitParticle, this.transform.position, this.transform.rotation);     
+                //this.spawner.Despawn(this.gameObject.transform);
+               
             }
             if (groundHit)
             {

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoreNPC : MonoBehaviour
+public class StoreNPC : DucMonobehavior
 {
     [SerializeField] protected GameObject[] itemInStore;
     [SerializeField] protected Inventory inventory;
     [SerializeField] protected Animator anim;
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.inventory = GetComponent<Inventory>();
         this.SetUpStore();
@@ -25,7 +25,7 @@ public class StoreNPC : MonoBehaviour
 
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Da vao cua hang");
         //TODO: Press F to open store here (Update)

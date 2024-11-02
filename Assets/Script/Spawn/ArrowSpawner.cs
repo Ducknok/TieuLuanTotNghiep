@@ -9,7 +9,7 @@ public class ArrowSpawner : Spawner
 
     public static string arrow = "Arrow_1";
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
         if (ArrowSpawner.instance != null) Debug.LogError("Only 1 ArrowSpawner allow to exist");
         ArrowSpawner.instance = this;
